@@ -1,31 +1,37 @@
-
 # Litends Website
 
-This is the official website for Litends, a company specializing in AI services and website building. Built with Next.js (TypeScript) and Tailwind CSS for a modern, fast, and professional experience.
+Official website for **Litends** — AI solutions and web development for startups and businesses. Based in Bremen, Germany.
 
-## Features
-- Modern responsive design
-- Fast performance
-- Accessibility best practices
-- Home, Services, About, and Contact pages
+## About
 
-## Getting Started
-
-1. Install dependencies:
-   ```sh
-   npm install
-   ```
-2. Run the development server:
-   ```sh
-   npm run dev
-   ```
-3. Open [http://localhost:3000](http://localhost:3000) to view the site.
+Litends helps businesses integrate AI tools and build modern, high-performance websites. Founded by Zeeshan, the company focuses on practical solutions that deliver real results.
 
 ## Tech Stack
-- Next.js (App Router, TypeScript)
-- Tailwind CSS
-- ESLint
 
----
+- Static HTML, CSS, JavaScript (no build step required)
+- Cabinet Grotesk + Satoshi (Fontshare) typography
+- Responsive design with mobile-first approach
+- Light/Dark mode support
+- Scroll-reveal animations
+- Accessible (semantic HTML, keyboard nav, ARIA labels)
 
-Replace this content as you customize your site!
+## Sections
+
+- **Home** — Hero with value proposition
+- **Services** — AI Consulting, Web Development, AI Integrations, Ongoing Support
+- **How We Work** — 4-step process overview
+- **About** — Company mission and values
+- **Founder** — Zeeshan's profile and skills
+- **Contact** — Contact form and details
+
+## Development
+
+No build step needed. Just open `index.html` in a browser or serve with any static file server:
+
+```sh
+npx serve . -l 3000
+```
+
+## License
+
+All rights reserved. © 2025 Litends.
