@@ -16,14 +16,12 @@
 /* ── CODE CARD: always dark (like VS Code / GitHub) ── */
 .code-card {
   background: #0d1117;
-  /* Light mode: stronger border so it reads as intentional dark panel */
   border: 1px solid rgba(0,0,0,0.18);
   border-radius: 14px;
   overflow: hidden;
   font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
   font-size: 0.78rem;
   line-height: 1.7;
-  /* Light mode: richer shadow so card feels grounded */
   box-shadow:
     0 2px 0 rgba(255,255,255,0.04) inset,
     0 24px 64px rgba(0,0,0,0.28),
@@ -31,7 +29,6 @@
     0 0 0 1px rgba(0,0,0,0.1);
   width: 100%;
 }
-/* In dark mode, restore the original subtle glow */
 [data-theme="dark"] .code-card,
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) .code-card {
@@ -69,13 +66,13 @@
   margin: 0;
   white-space: pre;
 }
-.c-kw  { color: #ff7b72; }  /* keyword: import, def, return */
-.c-fn  { color: #d2a8ff; }  /* function name */
-.c-str { color: #a5d6ff; }  /* strings */
-.c-num { color: #79c0ff; }  /* numbers / vars */
-.c-cm  { color: #8b949e; font-style: italic; }  /* comments */
-.c-br  { color: #ffa657; }  /* brackets / operators */
-.c-pl  { color: #e6edf3; }  /* plain */
+.c-kw  { color: #ff7b72; }
+.c-fn  { color: #d2a8ff; }
+.c-str { color: #a5d6ff; }
+.c-num { color: #79c0ff; }
+.c-cm  { color: #8b949e; font-style: italic; }
+.c-br  { color: #ffa657; }
+.c-pl  { color: #e6edf3; }
 .c-ln  {
   display: inline-block;
   width: 2ch;
@@ -85,7 +82,7 @@
   text-align: right;
 }
 
-/* Projects list redesign */
+/* Projects list */
 .projects-list {
   display: flex;
   flex-direction: column;
@@ -161,6 +158,60 @@
 @media (max-width: 640px) {
   .project-row { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.25rem 1.25rem; }
   .project-info h3 { white-space: normal; }
+  .project-gh-btn { width: 100%; justify-content: center; }
+}
+
+/* ── MOBILE LAYOUT FIXES ── */
+@media (max-width: 640px) {
+  /* Hero */
+  .hero {
+    padding-top: calc(64px + 2rem);
+    padding-bottom: 3rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    min-height: auto;
+  }
+  .hero h1 { font-size: clamp(2.2rem, 10vw, 3rem); line-height: 1.08; }
+  .hero-desc { font-size: 0.95rem; max-width: 100%; margin-bottom: 1.75rem; }
+  .hero-actions { flex-direction: column; align-items: stretch; gap: 0.75rem; margin-bottom: 2rem; }
+  .btn-hero-primary, .btn-hero-secondary { justify-content: center; width: 100%; }
+  .hero-stats { gap: 1.5rem; padding-top: 1.5rem; flex-wrap: wrap; }
+  .hero-stat-num { font-size: 1.3rem; }
+
+  /* Sections */
+  .section { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .section-inner { padding: 0; }
+
+  /* Services */
+  .service-item { padding: 1.75rem 1.25rem; }
+
+  /* Process */
+  .process-step { padding: 0 0 1.5rem 0; }
+
+  /* About */
+  .about-grid { gap: 2rem; }
+
+  /* Founder */
+  .founder-layout { gap: 2rem; }
+  .founder-aside { position: static; text-align: center; }
+  .founder-avatar-wrap { max-width: 180px; margin: 0 auto 1rem; }
+  .founder-socials { justify-content: center; }
+
+  /* Podcast */
+  .podcast-wrap { border-radius: 12px; }
+  .podcast-footer { flex-direction: column; align-items: flex-start; }
+  .podcast-cta-btn { width: 100%; justify-content: center; }
+
+  /* CTA band */
+  .cta-band { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+  .btn-cta-inv { width: 100%; justify-content: center; }
+
+  /* Contact */
+  .contact-form-wrap { padding: 1.25rem; }
+
+  /* Footer */
+  .footer { padding: 2.5rem 1.25rem 1.5rem; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
 }
 </style>
 <script type="application/ld+json">
@@ -247,7 +298,7 @@
           <div class="hero-stat-label">Response time</div>
         </div>
         <div>
-          <div class="hero-stat-num">2026</div>
+          <div class="hero-stat-num">2023</div>
           <div class="hero-stat-label">Founded</div>
         </div>
       </div>
@@ -771,7 +822,6 @@
 </footer>
 
 <script>
-/* Theme */
 (function(){
   const btn = document.getElementById('themeToggle');
   const root = document.documentElement;
@@ -788,7 +838,6 @@
   btn.addEventListener('click', () => apply(theme === 'dark' ? (theme='light','light') : (theme='dark','dark')));
 })();
 
-/* Nav scroll */
 (function(){
   const nav = document.getElementById('nav');
   const onScroll = () => nav.classList.toggle('scrolled', scrollY > 20);
@@ -796,7 +845,6 @@
   onScroll();
 })();
 
-/* Mobile nav */
 (function(){
   const btn = document.getElementById('navHamburger');
   const links = document.getElementById('navLinks');
@@ -804,7 +852,6 @@
   links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
 })();
 
-/* Active nav link */
 (function(){
   const links = document.querySelectorAll('.nav-links a');
   const sections = document.querySelectorAll('section[id]');
@@ -820,7 +867,6 @@
   sections.forEach(s => obs.observe(s));
 })();
 
-/* Scroll reveal */
 (function(){
   const els = document.querySelectorAll('.reveal');
   const obs = new IntersectionObserver(entries => {
@@ -829,7 +875,6 @@
   els.forEach(el => obs.observe(el));
 })();
 
-/* Smooth scroll */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', function(e){
     const t = document.querySelector(this.getAttribute('href'));
@@ -837,7 +882,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-/* Contact form - Formspree */
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const status = document.getElementById('formStatus');
