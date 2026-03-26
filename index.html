@@ -50,7 +50,6 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg">
-    <!-- Geometric grid — precise, architectural -->
     <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
         <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
@@ -62,7 +61,6 @@
       </defs>
       <rect width="100%" height="100%" fill="url(#grid)" color="var(--text)"/>
       <rect width="100%" height="100%" fill="url(#grid-lg)" color="var(--text)"/>
-      <!-- Diagonal accent line -->
       <line x1="700" y1="0" x2="1200" y2="500" stroke="var(--brand)" stroke-width="0.6" opacity="0.15"/>
       <line x1="750" y1="0" x2="1200" y2="450" stroke="var(--brand)" stroke-width="0.4" opacity="0.08"/>
     </svg>
@@ -105,7 +103,6 @@
 
     <div class="hero-visual reveal reveal-delay-2">
       <div class="hero-visual-card">
-        <!-- Architectural SVG diagram showing AI workflow -->
         <svg viewBox="0 0 360 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
           <defs>
             <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
@@ -115,40 +112,24 @@
               <path d="M0 1L5 3L0 5" fill="none" stroke="var(--brand)" stroke-width="1"/>
             </marker>
           </defs>
-
-          <!-- Node: Input -->
           <rect x="20" y="110" width="72" height="36" rx="6" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1"/>
           <text x="56" y="132" text-anchor="middle" font-size="10" font-family="JetBrains Mono,monospace" fill="var(--text-3)">input</text>
-
-          <!-- Node: Process -->
           <rect x="144" y="84" width="72" height="36" rx="6" fill="var(--brand-soft)" stroke="var(--brand)" stroke-width="1"/>
           <text x="180" y="106" text-anchor="middle" font-size="10" font-family="JetBrains Mono,monospace" fill="var(--brand)">process</text>
-
-          <!-- Node: AI Model -->
           <rect x="144" y="148" width="72" height="36" rx="6" fill="var(--brand-soft)" stroke="var(--brand)" stroke-width="1"/>
           <text x="180" y="170" text-anchor="middle" font-size="10" font-family="JetBrains Mono,monospace" fill="var(--brand)">model</text>
-
-          <!-- Node: Output -->
           <rect x="268" y="110" width="72" height="36" rx="6" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1"/>
           <text x="304" y="132" text-anchor="middle" font-size="10" font-family="JetBrains Mono,monospace" fill="var(--text-3)">output</text>
-
-          <!-- Connections -->
           <line x1="92" y1="128" x2="144" y2="102" stroke="var(--border-2)" stroke-width="1" marker-end="url(#arr)"/>
           <line x1="92" y1="128" x2="144" y2="162" stroke="var(--border-2)" stroke-width="1" marker-end="url(#arr)"/>
           <line x1="216" y1="102" x2="268" y2="122" stroke="var(--brand)" stroke-width="1" marker-end="url(#arr-brand)"/>
           <line x1="216" y1="162" x2="268" y2="138" stroke="var(--brand)" stroke-width="1" marker-end="url(#arr-brand)"/>
-
-          <!-- Top label -->
           <text x="180" y="30" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="var(--text-4)" letter-spacing="2">AI PIPELINE</text>
           <line x1="100" y1="38" x2="260" y2="38" stroke="var(--border)" stroke-width="0.8"/>
-
-          <!-- Bottom status row -->
           <rect x="20" y="220" width="14" height="14" rx="3" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1"/>
           <text x="40" y="231" font-size="9" font-family="JetBrains Mono,monospace" fill="var(--text-4)">deployed</text>
-
           <rect x="110" y="220" width="14" height="14" rx="3" fill="var(--amber-soft)" stroke="var(--amber)" stroke-width="1"/>
           <text x="130" y="231" font-size="9" font-family="JetBrains Mono,monospace" fill="var(--text-4)">monitoring</text>
-
           <rect x="220" y="220" width="14" height="14" rx="3" fill="var(--brand-soft)" stroke="var(--brand)" stroke-width="1"/>
           <text x="240" y="231" font-size="9" font-family="JetBrains Mono,monospace" fill="var(--text-4)">scaling</text>
         </svg>
@@ -182,7 +163,7 @@
         <div class="service-icon-wrap">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
         </div>
-        <h3>Website Design & Development</h3>
+        <h3>Website Design &amp; Development</h3>
         <p>Fast, responsive, accessible websites with clean code. Built to last, not to impress in a demo and break in production.</p>
         <div class="service-arrow">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -204,7 +185,7 @@
         <div class="service-icon-wrap">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
         </div>
-        <h3>Maintenance & Support</h3>
+        <h3>Maintenance &amp; Support</h3>
         <p>We stay after launch. Security updates, performance monitoring, feature improvements — you're never left alone with the code.</p>
         <div class="service-arrow">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -241,7 +222,7 @@
       </div>
       <div class="process-step reveal reveal-delay-3">
         <div class="process-step-num">04</div>
-        <h3>Launch & Support</h3>
+        <h3>Launch &amp; Support</h3>
         <p>We test thoroughly, launch together, and stay available long after go-live.</p>
       </div>
     </div>
@@ -310,7 +291,14 @@
     <div class="founder-layout">
       <div class="founder-aside reveal">
         <div class="founder-avatar-wrap">
-          <span class="founder-monogram" aria-hidden="true">Z</span>
+          <img
+            src="./founder.jpg"
+            alt="Zeeshan — Founder of Litends"
+            width="480"
+            height="480"
+            style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"
+            loading="eager"
+          >
         </div>
         <div class="founder-name">Zeeshan</div>
         <div class="founder-title">CEO &amp; Founder</div>
@@ -457,7 +445,7 @@
               <option value="ai-consulting">AI Consulting</option>
               <option value="web-dev">Website Development</option>
               <option value="ai-integration">AI Integration</option>
-              <option value="maintenance">Maintenance & Support</option>
+              <option value="maintenance">Maintenance &amp; Support</option>
               <option value="other">Something else</option>
             </select>
           </div>
@@ -594,7 +582,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-/* Contact form — Formspree */
+/* Contact form - Formspree */
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const status = document.getElementById('formStatus');
@@ -610,7 +598,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
       headers: {Accept: 'application/json'}
     });
     if (res.ok) {
-      status.textContent = '✓ Message sent. We\'ll be in touch within 24 hours.';
+      status.textContent = 'Message sent. We will be in touch within 24 hours.';
       status.className = 'success';
       this.reset();
     } else {
