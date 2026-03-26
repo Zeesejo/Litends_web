@@ -12,6 +12,138 @@
 <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./base.css">
 <link rel="stylesheet" href="./style.css">
+<style>
+.code-card {
+  background: #0d1117;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.04);
+  width: 100%;
+}
+.code-card-bar {
+  background: #161b22;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.code-dot { width: 12px; height: 12px; border-radius: 50%; }
+.code-dot-r { background: #ff5f57; }
+.code-dot-y { background: #febc2e; }
+.code-dot-g { background: #28c840; }
+.code-filename {
+  margin-left: 8px;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.02em;
+}
+.code-body {
+  padding: 20px 24px;
+  overflow-x: auto;
+}
+.code-body pre {
+  margin: 0;
+  white-space: pre;
+}
+.c-kw  { color: #ff7b72; }  /* keyword: import, def, return */
+.c-fn  { color: #d2a8ff; }  /* function name */
+.c-str { color: #a5d6ff; }  /* strings */
+.c-num { color: #79c0ff; }  /* numbers / vars */
+.c-cm  { color: #8b949e; font-style: italic; }  /* comments */
+.c-br  { color: #ffa657; }  /* brackets / operators */
+.c-pl  { color: #e6edf3; }  /* plain */
+.c-ln  {
+  display: inline-block;
+  width: 2ch;
+  margin-right: 20px;
+  color: rgba(255,255,255,0.18);
+  user-select: none;
+  text-align: right;
+}
+
+/* Projects list redesign */
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.project-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  transition: background 0.2s;
+}
+.project-row:last-child { border-bottom: none; }
+.project-row:hover { background: var(--surface-2); }
+.project-row-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  min-width: 0;
+  flex: 1;
+}
+.project-num {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-4);
+  letter-spacing: 0.08em;
+  min-width: 2ch;
+  padding-top: 3px;
+}
+.project-info { min-width: 0; }
+.project-info h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 0.3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.project-info p {
+  font-size: 0.85rem;
+  color: var(--text-3);
+  margin: 0 0 0.65rem;
+  line-height: 1.5;
+}
+.project-row-right { flex-shrink: 0; }
+.project-gh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-2);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 7px 14px;
+  text-decoration: none;
+  background: var(--surface-2);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.project-gh-btn:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+  background: var(--brand-soft);
+}
+@media (max-width: 640px) {
+  .project-row { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.25rem 1.25rem; }
+  .project-info h3 { white-space: normal; }
+}
+</style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Litends","url":"https://litends.com","description":"AI solutions and web development for startups and businesses.","founder":{"@type":"Person","name":"Zeeshan","jobTitle":"CEO & Founder"}}
 </script>
@@ -103,37 +235,35 @@
     </div>
 
     <div class="hero-visual reveal reveal-delay-2">
-      <div class="hero-visual-card">
-        <svg viewBox="0 0 360 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
-          <defs>
-            <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-              <path d="M0 1L5 3L0 5" fill="none" stroke="var(--border-2)" stroke-width="1"/>
-            </marker>
-            <marker id="arr-brand" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-              <path d="M0 1L5 3L0 5" fill="none" stroke="var(--brand)" stroke-width="1"/>
-            </marker>
-          </defs>
-          <rect x="20" y="110" width="72" height="36" rx="6" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1"/>
-          <text x="56" y="132" text-anchor="middle" font-size="10" font-family="JetBrains Mono,monospace" fill="var(--text-3)">input</text>
-          <rect x="144" y="84" width="72" height="36" rx="6" fill="var(--brand-soft)" stroke="var(--brand)" stroke-width="1"/>
-          <text x="180" y="106" text-anchor="middle" font-size="10" font-family="JetBrains Mono,monospace" fill="var(--brand)">process</text>
-          <rect x="144" y="148" width="72" height="36" rx="6" fill="var(--brand-soft)" stroke="var(--brand)" stroke-width="1"/>
-          <text x="180" y="170" text-anchor="middle" font-size="10" font-family="JetBrains Mono,monospace" fill="var(--brand)">model</text>
-          <rect x="268" y="110" width="72" height="36" rx="6" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1"/>
-          <text x="304" y="132" text-anchor="middle" font-size="10" font-family="JetBrains Mono,monospace" fill="var(--text-3)">output</text>
-          <line x1="92" y1="128" x2="144" y2="102" stroke="var(--border-2)" stroke-width="1" marker-end="url(#arr)"/>
-          <line x1="92" y1="128" x2="144" y2="162" stroke="var(--border-2)" stroke-width="1" marker-end="url(#arr)"/>
-          <line x1="216" y1="102" x2="268" y2="122" stroke="var(--brand)" stroke-width="1" marker-end="url(#arr-brand)"/>
-          <line x1="216" y1="162" x2="268" y2="138" stroke="var(--brand)" stroke-width="1" marker-end="url(#arr-brand)"/>
-          <text x="180" y="30" text-anchor="middle" font-size="9" font-family="JetBrains Mono,monospace" fill="var(--text-4)" letter-spacing="2">AI PIPELINE</text>
-          <line x1="100" y1="38" x2="260" y2="38" stroke="var(--border)" stroke-width="0.8"/>
-          <rect x="20" y="220" width="14" height="14" rx="3" fill="var(--green-soft)" stroke="var(--green)" stroke-width="1"/>
-          <text x="40" y="231" font-size="9" font-family="JetBrains Mono,monospace" fill="var(--text-4)">deployed</text>
-          <rect x="110" y="220" width="14" height="14" rx="3" fill="var(--amber-soft)" stroke="var(--amber)" stroke-width="1"/>
-          <text x="130" y="231" font-size="9" font-family="JetBrains Mono,monospace" fill="var(--text-4)">monitoring</text>
-          <rect x="220" y="220" width="14" height="14" rx="3" fill="var(--brand-soft)" stroke="var(--brand)" stroke-width="1"/>
-          <text x="240" y="231" font-size="9" font-family="JetBrains Mono,monospace" fill="var(--text-4)">scaling</text>
-        </svg>
+      <div class="code-card">
+        <div class="code-card-bar">
+          <span class="code-dot code-dot-r"></span>
+          <span class="code-dot code-dot-y"></span>
+          <span class="code-dot code-dot-g"></span>
+          <span class="code-filename">litends_ai.py</span>
+        </div>
+        <div class="code-body">
+          <pre><code><span class="c-ln">1</span><span class="c-kw">from</span> <span class="c-pl">openai</span> <span class="c-kw">import</span> <span class="c-pl">OpenAI</span>
+<span class="c-ln">2</span><span class="c-kw">import</span> <span class="c-pl">json</span>
+<span class="c-ln">3</span>
+<span class="c-ln">4</span><span class="c-cm"># Litends — AI integration layer</span>
+<span class="c-ln">5</span><span class="c-pl">client</span> <span class="c-br">=</span> <span class="c-fn">OpenAI</span><span class="c-br">(</span><span class="c-pl">api_key</span><span class="c-br">=</span><span class="c-pl">LITENDS_KEY</span><span class="c-br">)</span>
+<span class="c-ln">6</span>
+<span class="c-ln">7</span><span class="c-kw">def</span> <span class="c-fn">build_ai_feature</span><span class="c-br">(</span><span class="c-pl">user_input</span><span class="c-br">:</span> <span class="c-num">str</span><span class="c-br">)</span> <span class="c-br">-&gt;</span> <span class="c-num">dict</span><span class="c-br">:</span>
+<span class="c-ln">8</span>    <span class="c-pl">response</span> <span class="c-br">=</span> <span class="c-pl">client</span><span class="c-br">.</span><span class="c-fn">chat</span><span class="c-br">.</span><span class="c-fn">completions</span><span class="c-br">.</span><span class="c-fn">create</span><span class="c-br">(</span>
+<span class="c-ln">9</span>        <span class="c-pl">model</span>  <span class="c-br">=</span> <span class="c-str">&quot;gpt-4o&quot;</span><span class="c-br">,</span>
+<span class="c-ln">10</span>       <span class="c-pl">messages</span> <span class="c-br">=</span> <span class="c-br">[{</span>
+<span class="c-ln">11</span>           <span class="c-str">&quot;role&quot;</span><span class="c-br">:</span>    <span class="c-str">&quot;system&quot;</span><span class="c-br">,</span>
+<span class="c-ln">12</span>           <span class="c-str">&quot;content&quot;</span><span class="c-br">:</span> <span class="c-str">&quot;You are a helpful assistant.&quot;</span>
+<span class="c-ln">13</span>       <span class="c-br">},{</span>
+<span class="c-ln">14</span>           <span class="c-str">&quot;role&quot;</span><span class="c-br">:</span>    <span class="c-str">&quot;user&quot;</span><span class="c-br">,</span>
+<span class="c-ln">15</span>           <span class="c-str">&quot;content&quot;</span><span class="c-br">:</span> <span class="c-pl">user_input</span>
+<span class="c-ln">16</span>       <span class="c-br">}]</span>
+<span class="c-ln">17</span>    <span class="c-br">)</span>
+<span class="c-ln">18</span>    <span class="c-kw">return</span> <span class="c-pl">json</span><span class="c-br">.</span><span class="c-fn">loads</span><span class="c-br">(</span>
+<span class="c-ln">19</span>        <span class="c-pl">response</span><span class="c-br">.</span><span class="c-pl">choices</span><span class="c-br">[</span><span class="c-num">0</span><span class="c-br">].</span><span class="c-pl">message</span><span class="c-br">.</span><span class="c-pl">content</span>
+<span class="c-ln">20</span>    <span class="c-br">)</span></code></pre>
+        </div>
       </div>
     </div>
   </div>
@@ -238,82 +368,97 @@
       <h2>Projects</h2>
       <p>A selection of personal and research projects that reflect the depth of work we bring to every client engagement.</p>
     </div>
-    <div class="services-grid reveal reveal-delay-1">
 
-      <div class="service-item">
-        <span class="service-num">01</span>
-        <div class="service-icon-wrap">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
+    <div class="projects-list reveal reveal-delay-1">
+
+      <div class="project-row">
+        <div class="project-row-left">
+          <span class="project-num">01</span>
+          <div class="project-info">
+            <h3>EEG Motor Imagery Classification</h3>
+            <p>Brain-computer interface — classifying motor imagery signals from EEG data using deep learning.</p>
+            <div class="skill-grid">
+              <span class="skill-chip">Python</span>
+              <span class="skill-chip">ML</span>
+              <span class="skill-chip">BCI</span>
+              <span class="skill-chip">Jupyter</span>
+            </div>
+          </div>
         </div>
-        <h3>EEG Motor Imagery Classification</h3>
-        <p>Brain-computer interface — classifying motor imagery signals from EEG data using deep learning. Jupyter Notebook / Python.</p>
-        <div class="skill-grid" style="margin-top:0.75rem;">
-          <span class="skill-chip">Python</span>
-          <span class="skill-chip">ML</span>
-          <span class="skill-chip">BCI</span>
+        <div class="project-row-right">
+          <a href="https://github.com/Zeesejo/eeg-motor-imagery-classification" target="_blank" rel="noopener noreferrer" class="project-gh-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
         </div>
-        <a href="https://github.com/Zeesejo/eeg-motor-imagery-classification" target="_blank" rel="noopener noreferrer" class="service-arrow" style="margin-top:1rem;display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--brand);text-decoration:none;">
-          View on GitHub
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
       </div>
 
-      <div class="service-item">
-        <span class="service-num">02</span>
-        <div class="service-icon-wrap">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      <div class="project-row">
+        <div class="project-row-left">
+          <span class="project-num">02</span>
+          <div class="project-info">
+            <h3>Pneumothorax Shortcut Learning</h3>
+            <p>Breaking shortcut learning in medical AI — chest X-ray detection with 2.5x weighted sampling.</p>
+            <div class="skill-grid">
+              <span class="skill-chip">Python</span>
+              <span class="skill-chip">PyTorch</span>
+              <span class="skill-chip">Medical AI</span>
+            </div>
+          </div>
         </div>
-        <h3>Pneumothorax Shortcut Learning</h3>
-        <p>Breaking shortcut learning in medical AI — chest X-ray pneumothorax detection with 2.5x weighted sampling. Python / PyTorch.</p>
-        <div class="skill-grid" style="margin-top:0.75rem;">
-          <span class="skill-chip">Python</span>
-          <span class="skill-chip">Medical AI</span>
-          <span class="skill-chip">PyTorch</span>
+        <div class="project-row-right">
+          <a href="https://github.com/Zeesejo/pneumothorax-shortcut-learning" target="_blank" rel="noopener noreferrer" class="project-gh-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
         </div>
-        <a href="https://github.com/Zeesejo/pneumothorax-shortcut-learning" target="_blank" rel="noopener noreferrer" class="service-arrow" style="margin-top:1rem;display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--brand);text-decoration:none;">
-          View on GitHub
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
       </div>
 
-      <div class="service-item">
-        <span class="service-num">03</span>
-        <div class="service-icon-wrap">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+      <div class="project-row">
+        <div class="project-row-left">
+          <span class="project-num">03</span>
+          <div class="project-info">
+            <h3>Stock Market Prediction</h3>
+            <p>AI-powered financial forecasting using LSTM and GRU models with technical analysis indicators.</p>
+            <div class="skill-grid">
+              <span class="skill-chip">Python</span>
+              <span class="skill-chip">LSTM</span>
+              <span class="skill-chip">Finance AI</span>
+            </div>
+          </div>
         </div>
-        <h3>Stock Market Prediction</h3>
-        <p>AI-powered financial forecasting using LSTM and GRU models with technical analysis indicators. Python.</p>
-        <div class="skill-grid" style="margin-top:0.75rem;">
-          <span class="skill-chip">Python</span>
-          <span class="skill-chip">LSTM</span>
-          <span class="skill-chip">Finance AI</span>
+        <div class="project-row-right">
+          <a href="https://github.com/Zeesejo/Stock-Market-Prediction" target="_blank" rel="noopener noreferrer" class="project-gh-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
         </div>
-        <a href="https://github.com/Zeesejo/Stock-Market-Prediction" target="_blank" rel="noopener noreferrer" class="service-arrow" style="margin-top:1rem;display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--brand);text-decoration:none;">
-          View on GitHub
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
       </div>
 
-      <div class="service-item">
-        <span class="service-num">04</span>
-        <div class="service-icon-wrap">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="project-row">
+        <div class="project-row-left">
+          <span class="project-num">04</span>
+          <div class="project-info">
+            <h3>SafeMind</h3>
+            <p>Suicide prevention app for people in distress — real product with measurable social impact.</p>
+            <div class="skill-grid">
+              <span class="skill-chip">App Dev</span>
+              <span class="skill-chip">AI Safety</span>
+              <span class="skill-chip">Social Impact</span>
+            </div>
+          </div>
         </div>
-        <h3>SafeMind</h3>
-        <p>Suicide prevention app for people in distress and with mental illness. A real product with social impact built on AI safety principles.</p>
-        <div class="skill-grid" style="margin-top:0.75rem;">
-          <span class="skill-chip">App Dev</span>
-          <span class="skill-chip">AI Safety</span>
-          <span class="skill-chip">Social Impact</span>
+        <div class="project-row-right">
+          <a href="https://github.com/Zeesejo/Safetyapp" target="_blank" rel="noopener noreferrer" class="project-gh-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
         </div>
-        <a href="https://github.com/Zeesejo/Safetyapp" target="_blank" rel="noopener noreferrer" class="service-arrow" style="margin-top:1rem;display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--brand);text-decoration:none;">
-          View on GitHub
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
       </div>
 
     </div>
-    <p class="pricing-note" style="text-align:center;">
+
+    <p class="pricing-note" style="text-align:center;margin-top:2rem;">
       <a href="https://github.com/Zeesejo" target="_blank" rel="noopener noreferrer">See all projects on GitHub &rarr;</a>
     </p>
   </div>
