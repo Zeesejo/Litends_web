@@ -297,13 +297,11 @@
   pointer-events: none;
   overflow: hidden;
 }
-/* Geometric grid lines — precision, not decoration */
 .hero-bg svg {
   position: absolute;
   inset: 0;
   width: 100%; height: 100%;
 }
-/* Soft radial glow — brand color, subtle */
 .hero-glow {
   position: absolute;
   top: -10%;
@@ -445,7 +443,6 @@
   font-weight: 500;
 }
 
-/* Hero Visual — SVG diagram */
 .hero-visual {
   position: relative;
   display: flex;
@@ -1160,8 +1157,59 @@
   padding-bottom: var(--sp-12);
   border-bottom: 1px solid var(--border);
 }
-@media (max-width: 768px) { .footer-top { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+/* ── MOBILE FOOTER FIX ──
+   Brand row full-width on top,
+   then 3 link cols side by side in a sub-grid.
+   Prevents the long colour-block on 333px screens. */
+@media (max-width: 480px) {
+  .footer {
+    padding: var(--sp-10) var(--sp-5) var(--sp-6);
+  }
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-6);
+    margin-bottom: var(--sp-6);
+    padding-bottom: var(--sp-6);
+  }
+  /* Brand block stays as a single row */
+  .footer-top > div:first-child {
+    width: 100%;
+  }
+  /* Wrap the 3 nav cols into a horizontal 3-col sub-row */
+  .footer-top > div:first-child ~ div {
+    display: contents; /* lift children out */
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--sp-5);
+  }
+  /* Brand col spans full width */
+  .footer-top > div:first-child {
+    grid-column: 1 / -1;
+  }
+  .footer-brand-desc {
+    max-width: 100%;
+    font-size: 0.82rem;
+  }
+  .footer-col h4 {
+    font-size: 0.7rem;
+    margin-bottom: var(--sp-3);
+  }
+  .footer-col ul { gap: var(--sp-2); }
+  .footer-col a { font-size: 0.82rem; }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-2);
+  }
+  .footer-copy, .footer-legal a { font-size: 0.75rem; }
+}
+
 .footer-brand-desc {
   font-size: 0.875rem;
   color: var(--text-3);
