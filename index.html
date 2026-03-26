@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="./base.css">
 <link rel="stylesheet" href="./style.css">
 <style>
-/* ── CODE CARD: always dark (like VS Code / GitHub) ── */
+/* ── CODE CARD: always dark ── */
 .code-card {
   background: #0d1117;
   border: 1px solid rgba(0,0,0,0.18);
@@ -28,13 +28,6 @@
     0 4px 16px rgba(0,0,0,0.16),
     0 0 0 1px rgba(0,0,0,0.1);
   width: 100%;
-}
-[data-theme="dark"] .code-card,
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) .code-card {
-    border: 1px solid rgba(255,255,255,0.08);
-    box-shadow: 0 24px 64px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.04);
-  }
 }
 [data-theme="dark"] .code-card {
   border: 1px solid rgba(255,255,255,0.08);
@@ -62,10 +55,7 @@
   padding: 20px 24px;
   overflow-x: auto;
 }
-.code-body pre {
-  margin: 0;
-  white-space: pre;
-}
+.code-body pre { margin: 0; white-space: pre; }
 .c-kw  { color: #ff7b72; }
 .c-fn  { color: #d2a8ff; }
 .c-str { color: #a5d6ff; }
@@ -155,28 +145,63 @@
   color: var(--brand);
   background: var(--brand-soft);
 }
-@media (max-width: 640px) {
-  .project-row { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.25rem 1.25rem; }
-  .project-info h3 { white-space: normal; }
-  .project-gh-btn { width: 100%; justify-content: center; }
-}
 
 /* ── MOBILE LAYOUT FIXES ── */
 @media (max-width: 640px) {
-  /* Hero */
+
+  /* Hero background SVG — clip so lines don't overflow */
+  .hero-bg {
+    overflow: hidden;
+  }
+  .hero-bg svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Hero section sizing */
   .hero {
     padding-top: calc(64px + 2rem);
     padding-bottom: 3rem;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
     min-height: auto;
+    overflow: hidden;
   }
+
+  /* Hero inner: stack content above code card */
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  /* Hero text */
   .hero h1 { font-size: clamp(2.2rem, 10vw, 3rem); line-height: 1.08; }
   .hero-desc { font-size: 0.95rem; max-width: 100%; margin-bottom: 1.75rem; }
   .hero-actions { flex-direction: column; align-items: stretch; gap: 0.75rem; margin-bottom: 2rem; }
   .btn-hero-primary, .btn-hero-secondary { justify-content: center; width: 100%; }
   .hero-stats { gap: 1.5rem; padding-top: 1.5rem; flex-wrap: wrap; }
   .hero-stat-num { font-size: 1.3rem; }
+
+  /* Code card — shrink font & padding, allow horizontal scroll, cap height */
+  .hero-visual {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .code-card {
+    font-size: 0.68rem;
+    border-radius: 10px;
+  }
+  .code-body {
+    padding: 14px 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: 260px;
+    overflow-y: auto;
+  }
+  .c-ln { margin-right: 12px; }
 
   /* Sections */
   .section { padding-left: 1.25rem; padding-right: 1.25rem; }
@@ -196,6 +221,11 @@
   .founder-aside { position: static; text-align: center; }
   .founder-avatar-wrap { max-width: 180px; margin: 0 auto 1rem; }
   .founder-socials { justify-content: center; }
+
+  /* Projects */
+  .project-row { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.25rem 1.25rem; }
+  .project-info h3 { white-space: normal; }
+  .project-gh-btn { width: 100%; justify-content: center; }
 
   /* Podcast */
   .podcast-wrap { border-radius: 12px; }
@@ -279,7 +309,7 @@
       </div>
       <h1>We build<br><em>intelligent</em><br>software.</h1>
       <p class="hero-desc">
-        Litends helps startups and growing businesses design and build AI-powered products and modern websites — with the precision and care that earns real trust.
+        Litends helps startups and growing businesses design and build AI-powered products and modern websites &mdash; with the precision and care that earns real trust.
       </p>
       <div class="hero-actions">
         <a href="#services" class="btn-hero-primary">
@@ -354,7 +384,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44l-1.1-7.23A2.5 2.5 0 0 1 4 9.5v-3A2.5 2.5 0 0 1 6.5 4"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44l1.1-7.23A2.5 2.5 0 0 0 20 9.5v-3A2.5 2.5 0 0 0 17.5 4"/></svg>
         </div>
         <h3>AI Consulting</h3>
-        <p>We assess where AI genuinely fits your workflow — not where it sounds good on a slide. Honest scoping, real ROI.</p>
+        <p>We assess where AI genuinely fits your workflow &mdash; not where it sounds good on a slide. Honest scoping, real ROI.</p>
         <div class="service-arrow">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
@@ -376,7 +406,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         </div>
         <h3>Custom AI Integrations</h3>
-        <p>Connect AI models to your existing tools — automation, document processing, intelligent search, custom chat interfaces.</p>
+        <p>Connect AI models to your existing tools &mdash; automation, document processing, intelligent search, custom chat interfaces.</p>
         <div class="service-arrow">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
@@ -387,7 +417,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
         </div>
         <h3>Maintenance &amp; Support</h3>
-        <p>We stay after launch. Security updates, performance monitoring, feature improvements — you're never left alone with the code.</p>
+        <p>We stay after launch. Security updates, performance monitoring, feature improvements &mdash; you're never left alone with the code.</p>
         <div class="service-arrow">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
@@ -446,7 +476,7 @@
           <span class="project-num">01</span>
           <div class="project-info">
             <h3>EEG Motor Imagery Classification</h3>
-            <p>Brain-computer interface — classifying motor imagery signals from EEG data using deep learning.</p>
+            <p>Brain-computer interface &mdash; classifying motor imagery signals from EEG data using deep learning.</p>
             <div class="skill-grid">
               <span class="skill-chip">Python</span>
               <span class="skill-chip">ML</span>
@@ -468,7 +498,7 @@
           <span class="project-num">02</span>
           <div class="project-info">
             <h3>Pneumothorax Shortcut Learning</h3>
-            <p>Breaking shortcut learning in medical AI — chest X-ray detection with 2.5x weighted sampling.</p>
+            <p>Breaking shortcut learning in medical AI &mdash; chest X-ray detection with 2.5x weighted sampling.</p>
             <div class="skill-grid">
               <span class="skill-chip">Python</span>
               <span class="skill-chip">PyTorch</span>
@@ -510,7 +540,7 @@
           <span class="project-num">04</span>
           <div class="project-info">
             <h3>SafeMind</h3>
-            <p>Suicide prevention app for people in distress — real product with measurable social impact.</p>
+            <p>Suicide prevention app for people in distress &mdash; real product with measurable social impact.</p>
             <div class="skill-grid">
               <span class="skill-chip">App Dev</span>
               <span class="skill-chip">AI Safety</span>
@@ -621,7 +651,7 @@
       </div>
       <div class="founder-bio reveal reveal-delay-1">
         <h3>The person building your product is the person you talk to.</h3>
-        <p>Zeeshan is a developer and AI researcher based in Bremen, Germany. His background spans computer science, artificial intelligence, robotics, and knowledge systems — which means he approaches problems from both a theoretical and a deeply practical angle.</p>
+        <p>Zeeshan is a developer and AI researcher based in Bremen, Germany. His background spans computer science, artificial intelligence, robotics, and knowledge systems &mdash; which means he approaches problems from both a theoretical and a deeply practical angle.</p>
         <p>He started Litends because he kept seeing the same pattern: businesses paying for AI and web projects that were technically impressive but practically useless. Too abstract, too over-engineered, too disconnected from what the client actually needed. Litends exists to do the opposite.</p>
         <p>When you work with Litends, you work directly with Zeeshan. No account managers, no junior handoffs. Just clear communication and work that gets done right.</p>
         <div class="skill-grid">
@@ -654,7 +684,7 @@
         </div>
         <div class="podcast-meta">
           <h3>The Litends Podcast</h3>
-          <p>AI for business, web development, and building a startup in 2026. Real talk — no fluff.</p>
+          <p>AI for business, web development, and building a startup in 2026. Real talk &mdash; no fluff.</p>
           <div class="podcast-platform-badge">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
             Spotify
@@ -710,7 +740,7 @@
       <div class="contact-info reveal">
         <div class="section-label">Contact</div>
         <h2>Let's talk about your project.</h2>
-        <p>Whether you have a clear brief or just an idea — we're happy to have a no-pressure conversation about what you need.</p>
+        <p>Whether you have a clear brief or just an idea &mdash; we're happy to have a no-pressure conversation about what you need.</p>
         <div class="contact-item">
           <div class="contact-item-icon">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
