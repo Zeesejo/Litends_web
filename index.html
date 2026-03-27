@@ -13,20 +13,21 @@
 <link rel="stylesheet" href="./base.css">
 <link rel="stylesheet" href="./style.css">
 <style>
-/* ── CODE CARD: always dark ── */
+/* ══════════════════════════════════════
+   CODE CARD (always dark)
+══════════════════════════════════════ */
 .code-card {
   background: #0d1117;
   border: 1px solid rgba(0,0,0,0.18);
   border-radius: 14px;
   overflow: hidden;
-  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-family: 'JetBrains Mono','Fira Code','Cascadia Code',monospace;
   font-size: 0.78rem;
   line-height: 1.7;
-  box-shadow:
-    0 2px 0 rgba(255,255,255,0.04) inset,
-    0 24px 64px rgba(0,0,0,0.28),
-    0 4px 16px rgba(0,0,0,0.16),
-    0 0 0 1px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 0 rgba(255,255,255,0.04) inset,
+              0 24px 64px rgba(0,0,0,0.28),
+              0 4px 16px rgba(0,0,0,0.16),
+              0 0 0 1px rgba(0,0,0,0.1);
   width: 100%;
 }
 [data-theme="dark"] .code-card {
@@ -72,7 +73,9 @@
   text-align: right;
 }
 
-/* Projects list */
+/* ══════════════════════════════════════
+   PROJECTS LIST
+══════════════════════════════════════ */
 .projects-list {
   display: flex;
   flex-direction: column;
@@ -146,14 +149,27 @@
   background: var(--brand-soft);
 }
 
-/* ── MOBILE LAYOUT FIXES ── */
+/* ══════════════════════════════════════
+   MOBILE — ≤ 768px  (tablet portrait)
+══════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Force hide desktop nav CTA — Brave/Chrome sometimes ignore the rule in style.css */
+  .nav-cta-desktop { display: none !important; }
+}
+
+/* ══════════════════════════════════════
+   MOBILE — ≤ 640px  (all phones)
+══════════════════════════════════════ */
 @media (max-width: 640px) {
 
-  /* Hero background SVG */
+  /* ── NAV ── */
+  .nav-cta-desktop { display: none !important; }
+
+  /* ── HERO BG ── */
   .hero-bg { overflow: hidden; }
   .hero-bg svg { width: 100%; height: 100%; }
 
-  /* Hero section */
+  /* ── HERO SECTION ── */
   .hero {
     padding-top: calc(64px + 2rem);
     padding-bottom: 3rem;
@@ -163,7 +179,7 @@
     overflow: hidden;
   }
 
-  /* Hero inner: stack */
+  /* ── HERO INNER: single column ── */
   .hero-inner {
     display: flex;
     flex-direction: column;
@@ -171,69 +187,126 @@
     align-items: stretch;
   }
 
-  /* Hero text */
-  .hero h1 { font-size: clamp(2.2rem, 10vw, 3rem); line-height: 1.08; }
-  .hero-desc { font-size: 0.95rem; max-width: 100%; margin-bottom: 1.75rem; }
-  .hero-actions { flex-direction: column; align-items: stretch; gap: 0.75rem; margin-bottom: 2rem; }
-  .btn-hero-primary, .btn-hero-secondary { justify-content: center; width: 100%; }
-  .hero-stats { gap: 1.5rem; padding-top: 1.5rem; flex-wrap: wrap; }
-  .hero-stat-num { font-size: 1.3rem; }
+  /* ── HERO TEXT ── */
+  .hero h1 {
+    font-size: clamp(2rem, 10vw, 2.8rem);
+    line-height: 1.08;
+    text-align: center;
+  }
+  .hero-eyebrow { display: flex; justify-content: center; }
+  .hero-desc {
+    font-size: 0.95rem;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
 
-  /* Code card */
+  /* ── HERO BUTTONS: fix arrow detach, full-width ── */
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  .btn-hero-primary,
+  .btn-hero-secondary {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    text-decoration: none !important;
+    padding: 14px 20px;
+  }
+  /* Make sure SVG arrow stays inside the button */
+  .btn-hero-primary svg,
+  .btn-hero-secondary svg {
+    flex-shrink: 0;
+    display: inline-block;
+  }
+
+  /* ── HERO STATS ── */
+  .hero-stats {
+    gap: 1.25rem;
+    padding-top: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-stat-num { font-size: 1.3rem; }
+  .hero-stat-label { font-size: 0.7rem; }
+
+  /* ── CODE CARD ── */
   .hero-visual { width: 100%; max-width: 100%; overflow: hidden; }
-  .code-card { font-size: 0.68rem; border-radius: 10px; }
+  .code-card { font-size: 0.65rem; border-radius: 10px; }
   .code-body {
-    padding: 14px 16px;
+    padding: 12px 14px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    max-height: 260px;
+    max-height: 240px;
     overflow-y: auto;
   }
-  .c-ln { margin-right: 12px; }
+  .c-ln { margin-right: 10px; }
 
-  /* Sections */
-  .section { padding-left: 1.25rem; padding-right: 1.25rem; }
+  /* ── SECTIONS ── */
+  .section {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
   .section-inner { padding: 0; }
+  .section-header h2 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
 
-  /* Services */
-  .service-item { padding: 1.75rem 1.25rem; }
+  /* ── SERVICES ── */
+  .service-item { padding: 1.5rem 1.25rem; }
+  .service-item p { max-width: 100%; }
 
-  /* Process */
+  /* ── PROCESS ── */
   .process-step { padding: 0 0 1.5rem 0; }
 
-  /* About */
+  /* ── ABOUT ── */
   .about-grid { gap: 2rem; }
 
-  /* Founder */
+  /* ── FOUNDER ── */
   .founder-layout { gap: 2rem; }
   .founder-aside { position: static; text-align: center; }
-  .founder-avatar-wrap { max-width: 180px; margin: 0 auto 1rem; }
+  .founder-avatar-wrap { max-width: 160px; margin: 0 auto 1rem; }
   .founder-socials { justify-content: center; }
 
-  /* Projects */
-  .project-row { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.25rem 1.25rem; }
+  /* ── PROJECTS ── */
+  .project-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1.25rem;
+  }
   .project-info h3 { white-space: normal; }
   .project-gh-btn { width: 100%; justify-content: center; }
 
-  /* Podcast */
+  /* ── PODCAST ── */
   .podcast-wrap { border-radius: 12px; }
   .podcast-footer { flex-direction: column; align-items: flex-start; }
   .podcast-cta-btn { width: 100%; justify-content: center; }
 
-  /* CTA band */
-  .cta-band { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+  /* ── CTA BAND ── */
+  .cta-band {
+    padding: 2rem 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .btn-cta-inv { width: 100%; justify-content: center; }
 
-  /* Contact */
+  /* ── CONTACT ── */
   .contact-form-wrap { padding: 1.25rem; }
 
-  /* ── FOOTER MOBILE (covers S23 / 360px wide screens) ── */
+  /* ══════════════════════════════════════
+     FOOTER MOBILE — S23 (360px) and up
+     Brand row full width, 3 nav cols side by side
+  ══════════════════════════════════════ */
   .footer {
     padding: 2.5rem 1.25rem 1.5rem;
   }
-  /* 3-col grid: brand spans full width, 3 nav cols sit side by side below */
   .footer-top {
-    display: grid;
+    display: grid !important;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1.25rem;
     margin-bottom: 1.5rem;
@@ -260,6 +333,24 @@
   }
   .footer-copy { font-size: 0.75rem; }
   .footer-legal a { font-size: 0.75rem; }
+}
+
+/* ══════════════════════════════════════
+   EXTRA SMALL — ≤ 380px  (S23 / SE)
+   Tighten further for very narrow screens
+══════════════════════════════════════ */
+@media (max-width: 380px) {
+  .hero h1 { font-size: 1.9rem; }
+  .hero-desc { font-size: 0.9rem; }
+  .btn-hero-primary, .btn-hero-secondary { font-size: 0.85rem; padding: 12px 16px; }
+  .hero-stat-num { font-size: 1.15rem; }
+  .hero-eyebrow { font-size: 0.65rem; }
+  .section { padding-left: 1rem; padding-right: 1rem; }
+  .service-item { padding: 1.25rem 1rem; }
+  .footer { padding: 2rem 1rem 1.25rem; }
+  .footer-top { gap: 0.75rem; }
+  .footer-col h4 { font-size: 0.62rem; }
+  .footer-col a { font-size: 0.75rem; }
 }
 </style>
 <script type="application/ld+json">
@@ -488,7 +579,6 @@
     </div>
 
     <div class="projects-list reveal reveal-delay-1">
-
       <div class="project-row">
         <div class="project-row-left">
           <span class="project-num">01</span>
@@ -496,10 +586,7 @@
             <h3>EEG Motor Imagery Classification</h3>
             <p>Brain-computer interface &mdash; classifying motor imagery signals from EEG data using deep learning.</p>
             <div class="skill-grid">
-              <span class="skill-chip">Python</span>
-              <span class="skill-chip">ML</span>
-              <span class="skill-chip">BCI</span>
-              <span class="skill-chip">Jupyter</span>
+              <span class="skill-chip">Python</span><span class="skill-chip">ML</span><span class="skill-chip">BCI</span><span class="skill-chip">Jupyter</span>
             </div>
           </div>
         </div>
@@ -510,7 +597,6 @@
           </a>
         </div>
       </div>
-
       <div class="project-row">
         <div class="project-row-left">
           <span class="project-num">02</span>
@@ -518,9 +604,7 @@
             <h3>Pneumothorax Shortcut Learning</h3>
             <p>Breaking shortcut learning in medical AI &mdash; chest X-ray detection with 2.5x weighted sampling.</p>
             <div class="skill-grid">
-              <span class="skill-chip">Python</span>
-              <span class="skill-chip">PyTorch</span>
-              <span class="skill-chip">Medical AI</span>
+              <span class="skill-chip">Python</span><span class="skill-chip">PyTorch</span><span class="skill-chip">Medical AI</span>
             </div>
           </div>
         </div>
@@ -531,7 +615,6 @@
           </a>
         </div>
       </div>
-
       <div class="project-row">
         <div class="project-row-left">
           <span class="project-num">03</span>
@@ -539,9 +622,7 @@
             <h3>Stock Market Prediction</h3>
             <p>AI-powered financial forecasting using LSTM and GRU models with technical analysis indicators.</p>
             <div class="skill-grid">
-              <span class="skill-chip">Python</span>
-              <span class="skill-chip">LSTM</span>
-              <span class="skill-chip">Finance AI</span>
+              <span class="skill-chip">Python</span><span class="skill-chip">LSTM</span><span class="skill-chip">Finance AI</span>
             </div>
           </div>
         </div>
@@ -552,7 +633,6 @@
           </a>
         </div>
       </div>
-
       <div class="project-row">
         <div class="project-row-left">
           <span class="project-num">04</span>
@@ -560,9 +640,7 @@
             <h3>SafeMind</h3>
             <p>Suicide prevention app for people in distress &mdash; real product with measurable social impact.</p>
             <div class="skill-grid">
-              <span class="skill-chip">App Dev</span>
-              <span class="skill-chip">AI Safety</span>
-              <span class="skill-chip">Social Impact</span>
+              <span class="skill-chip">App Dev</span><span class="skill-chip">AI Safety</span><span class="skill-chip">Social Impact</span>
             </div>
           </div>
         </div>
@@ -573,7 +651,6 @@
           </a>
         </div>
       </div>
-
     </div>
 
     <p class="pricing-note" style="text-align:center;margin-top:2rem;">
@@ -594,40 +671,20 @@
       </div>
       <ul class="values-list reveal reveal-delay-1">
         <li class="value-row">
-          <div class="value-row-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 2v12M2 8h12"/></svg>
-          </div>
-          <div>
-            <strong>Honesty over hype</strong>
-            <p>We'll tell you when AI isn't the right tool. Our job is to solve your problem, not sell you a service.</p>
-          </div>
+          <div class="value-row-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 2v12M2 8h12"/></svg></div>
+          <div><strong>Honesty over hype</strong><p>We'll tell you when AI isn't the right tool. Our job is to solve your problem, not sell you a service.</p></div>
         </li>
         <li class="value-row">
-          <div class="value-row-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="2 10 6 14 14 4"/></svg>
-          </div>
-          <div>
-            <strong>Craft matters</strong>
-            <p>Clean code, tested, documented. Work that another developer can pick up in five years and understand.</p>
-          </div>
+          <div class="value-row-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="2 10 6 14 14 4"/></svg></div>
+          <div><strong>Craft matters</strong><p>Clean code, tested, documented. Work that another developer can pick up in five years and understand.</p></div>
         </li>
         <li class="value-row">
-          <div class="value-row-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="12" height="10" rx="1"/><path d="M5 4V3a3 3 0 0 1 6 0v1"/></svg>
-          </div>
-          <div>
-            <strong>Transparent pricing</strong>
-            <p>Fixed-scope quotes, no scope creep surprises. You know what you're getting before we start.</p>
-          </div>
+          <div class="value-row-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="12" height="10" rx="1"/><path d="M5 4V3a3 3 0 0 1 6 0v1"/></svg></div>
+          <div><strong>Transparent pricing</strong><p>Fixed-scope quotes, no scope creep surprises. You know what you're getting before we start.</p></div>
         </li>
         <li class="value-row">
-          <div class="value-row-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 5v4l3 2"/></svg>
-          </div>
-          <div>
-            <strong>Long-term thinking</strong>
-            <p>We build to scale. Decisions today that won't cost you a full rewrite in 18 months.</p>
-          </div>
+          <div class="value-row-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 5v4l3 2"/></svg></div>
+          <div><strong>Long-term thinking</strong><p>We build to scale. Decisions today that won't cost you a full rewrite in 18 months.</p></div>
         </li>
       </ul>
     </div>
@@ -644,14 +701,8 @@
     <div class="founder-layout">
       <div class="founder-aside reveal">
         <div class="founder-avatar-wrap">
-          <img
-            src="./founder.jpg"
-            alt="Zeeshan — Founder of Litends"
-            width="480"
-            height="480"
-            style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"
-            loading="eager"
-          >
+          <img src="./founder.jpg" alt="Zeeshan — Founder of Litends" width="480" height="480"
+            style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" loading="eager">
         </div>
         <div class="founder-name">Zeeshan</div>
         <div class="founder-title">CEO &amp; Founder</div>
@@ -673,14 +724,9 @@
         <p>He started Litends because he kept seeing the same pattern: businesses paying for AI and web projects that were technically impressive but practically useless. Too abstract, too over-engineered, too disconnected from what the client actually needed. Litends exists to do the opposite.</p>
         <p>When you work with Litends, you work directly with Zeeshan. No account managers, no junior handoffs. Just clear communication and work that gets done right.</p>
         <div class="skill-grid">
-          <span class="skill-chip">Python</span>
-          <span class="skill-chip">AI / ML</span>
-          <span class="skill-chip">Next.js</span>
-          <span class="skill-chip">Web Dev</span>
-          <span class="skill-chip">Robotics</span>
-          <span class="skill-chip">Knowledge Systems</span>
-          <span class="skill-chip">LLM Integration</span>
-          <span class="skill-chip">Bremen, DE</span>
+          <span class="skill-chip">Python</span><span class="skill-chip">AI / ML</span><span class="skill-chip">Next.js</span>
+          <span class="skill-chip">Web Dev</span><span class="skill-chip">Robotics</span><span class="skill-chip">Knowledge Systems</span>
+          <span class="skill-chip">LLM Integration</span><span class="skill-chip">Bremen, DE</span>
         </div>
       </div>
     </div>
@@ -710,21 +756,15 @@
         </div>
       </div>
       <div class="podcast-embed">
-        <iframe
-          src="https://open.spotify.com/embed/show/7Gm4QCvLZI8qfnBoESAub4?utm_source=generator&theme=0"
-          width="100%" height="232"
-          frameBorder="0"
+        <iframe src="https://open.spotify.com/embed/show/7Gm4QCvLZI8qfnBoESAub4?utm_source=generator&theme=0"
+          width="100%" height="232" frameBorder="0"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-          title="The Litends Podcast on Spotify"
-        ></iframe>
+          loading="lazy" title="The Litends Podcast on Spotify"></iframe>
       </div>
       <div class="podcast-footer">
         <div class="podcast-tags">
-          <span class="podcast-tag">AI for Business</span>
-          <span class="podcast-tag">Web Dev</span>
-          <span class="podcast-tag">Startup Life</span>
-          <span class="podcast-tag">Tech in Germany</span>
+          <span class="podcast-tag">AI for Business</span><span class="podcast-tag">Web Dev</span>
+          <span class="podcast-tag">Startup Life</span><span class="podcast-tag">Tech in Germany</span>
         </div>
         <a href="https://open.spotify.com/show/7Gm4QCvLZI8qfnBoESAub4" class="podcast-cta-btn" target="_blank" rel="noopener noreferrer">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -760,25 +800,18 @@
         <h2>Let's talk about your project.</h2>
         <p>Whether you have a clear brief or just an idea &mdash; we're happy to have a no-pressure conversation about what you need.</p>
         <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
+          <div class="contact-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
           <div><h4>Email</h4><a href="mailto:contact@litends.com">contact@litends.com</a></div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
+          <div class="contact-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div><h4>Location</h4><p>Bremen, Germany</p></div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
+          <div class="contact-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
           <div><h4>Response time</h4><p>Within 24 hours</p></div>
         </div>
       </div>
-
       <div class="contact-form-wrap reveal reveal-delay-1">
         <form id="contactForm" action="https://formspree.io/f/xdapkoop" method="POST">
           <div class="form-row">
@@ -819,7 +852,7 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div>
-        <a href="#" class="nav-logo" style="margin-bottom: 0;">
+        <a href="#" class="nav-logo" style="margin-bottom:0;">
           <div class="nav-logo-mark">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
               <path d="M4 3v12l8 0" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
