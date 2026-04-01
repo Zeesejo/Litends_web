@@ -36,6 +36,9 @@
 </head>
 <body>
 
+<!-- ═══════════════ SCROLL PROGRESS BAR ═══════════════ -->
+<div id="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
 <!-- ═══════════════ NAVIGATION ═══════════════ -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
@@ -528,6 +531,11 @@
   </div>
 </footer>
 
+<!-- ═══════════════ SCROLL TO TOP BUTTON ═══════════════ -->
+<button id="scroll-top" aria-label="Back to top" title="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <!-- ═══════════════ SCRIPTS ═══════════════ -->
 <script>
 // Theme toggle
@@ -613,6 +621,35 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
+})();
+
+// Scroll progress bar + scroll-to-top button
+(function(){
+  const bar = document.getElementById('scroll-progress');
+  const btn = document.getElementById('scroll-top');
+
+  function onScroll() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? Math.round((scrollTop / docHeight) * 100) : 0;
+
+    // Progress bar
+    bar.style.width = pct + '%';
+    bar.setAttribute('aria-valuenow', pct);
+
+    // Scroll-to-top visibility (show after 300px)
+    if (scrollTop > 300) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 })();
 
 // Contact form handler (frontend only)
