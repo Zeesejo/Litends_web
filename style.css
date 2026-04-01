@@ -597,6 +597,68 @@
   line-height: 1.6;
 }
 
+/* ── Tech Stack ── */
+.stack-categories {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+.stack-category {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+.stack-cat-label {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-faint);
+  min-width: 120px;
+  padding-top: var(--space-2);
+  flex-shrink: 0;
+}
+.stack-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.stack-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  transition: all var(--transition-interactive);
+}
+.stack-pill:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+/* Light/Dark icon switching */
+.stack-icon-light { display: block; }
+.stack-icon-dark  { display: none; }
+[data-theme="dark"] .stack-icon-light { display: none; }
+[data-theme="dark"] .stack-icon-dark  { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .stack-icon-light { display: none; }
+  :root:not([data-theme]) .stack-icon-dark  { display: block; }
+}
+@media (max-width: 640px) {
+  .stack-category { flex-direction: column; gap: var(--space-3); }
+  .stack-cat-label { min-width: unset; }
+}
+
 /* ── Contact Form ── */
 .contact-layout {
   display: grid;
