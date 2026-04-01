@@ -59,6 +59,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#home" class="active">Home</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#stack">Stack</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#founder">Founder</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -396,8 +397,65 @@
   </div>
 </section>
 
+<!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+<section class="section" id="testimonials">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label">Kind Words</div>
+      <h2>What Clients Say</h2>
+      <p>Early feedback from people we've worked with and collaborated alongside.</p>
+    </div>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+        <blockquote>
+          <p>"Zeeshan delivered a clean, fast website well ahead of schedule. He communicated clearly throughout and was upfront about what was realistic. Exactly what a small business needs."</p>
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div>
+            <div class="testimonial-name">Maria S.</div>
+            <div class="testimonial-title">Founder, Boutique E-commerce</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+        <blockquote>
+          <p>"We needed an AI tool to automate a repetitive internal process. Litends scoped it honestly, built it in two weeks, and it's been running without issues since. No drama, just results."</p>
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">T</div>
+          <div>
+            <div class="testimonial-name">Thomas B.</div>
+            <div class="testimonial-title">Operations Lead, SaaS Startup</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+        <blockquote>
+          <p>"I appreciated that Zeeshan told me upfront when something wasn't the right approach. That kind of honesty is rare. The final product was exactly what I envisioned."</p>
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">A</div>
+          <div>
+            <div class="testimonial-name">Aisha K.</div>
+            <div class="testimonial-title">Independent Researcher</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════ CTA BANNER ═══════════════ -->
-<section class="section">
+<section class="section section-alt">
   <div class="section-inner">
     <div class="cta-banner reveal">
       <h2>Ready to start a project?</h2>
@@ -408,7 +466,7 @@
 </section>
 
 <!-- ═══════════════ CONTACT ═══════════════ -->
-<section class="section section-alt" id="contact">
+<section class="section" id="contact">
   <div class="section-inner">
     <div class="contact-layout">
       <div class="contact-info reveal">
@@ -632,24 +690,13 @@
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const pct = docHeight > 0 ? Math.round((scrollTop / docHeight) * 100) : 0;
-
-    // Progress bar
     bar.style.width = pct + '%';
     bar.setAttribute('aria-valuenow', pct);
-
-    // Scroll-to-top visibility (show after 300px)
-    if (scrollTop > 300) {
-      btn.classList.add('visible');
-    } else {
-      btn.classList.remove('visible');
-    }
+    btn.classList.toggle('visible', scrollTop > 300);
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-
-  btn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 })();
 
 // Contact form handler (frontend only)
