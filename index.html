@@ -36,8 +36,10 @@
 </head>
 <body>
 
+<!-- ═══════════════ SCROLL PROGRESS BAR ═══════════════ -->
 <div id="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="#" class="nav-logo" aria-label="Litends Home">
@@ -58,7 +60,6 @@
       <li><a href="#home" class="active">Home</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#stack">Stack</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#founder">Founder</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -77,6 +78,7 @@
   </div>
 </nav>
 
+<!-- ═══════════════ HERO ═══════════════ -->
 <section class="hero" id="home">
   <div class="hero-inner reveal">
     <div class="hero-badge">AI & Web Development Studio</div>
@@ -86,12 +88,57 @@
     </p>
     <div class="hero-cta-group">
       <a href="#services" class="btn btn-primary">Our Services</a>
-      <button class="btn btn-secondary" type="button" id="openBookingModal">Book a Call</button>
+      <button class="btn btn-accent" id="bookCallBtn">Book a Free Call</button>
       <a href="#contact" class="btn btn-secondary">Get in Touch</a>
     </div>
   </div>
 </section>
 
+<!-- ═══════════════ BOOK A CALL MODAL ═══════════════ -->
+<div id="bookModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="modal-header">
+      <div class="modal-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <h2 id="modalTitle">Book a Free 30-min Call</h2>
+      <p>Pick a slot and we'll talk through your project — no pressure, no commitment.</p>
+    </div>
+    <div class="modal-slots">
+      <div class="slots-label">Available this week</div>
+      <div class="slots-grid" id="slotsGrid">
+        <button class="slot-btn" data-slot="Mon Apr 7 · 10:00">Mon Apr 7<span>10:00 AM</span></button>
+        <button class="slot-btn" data-slot="Mon Apr 7 · 14:00">Mon Apr 7<span>2:00 PM</span></button>
+        <button class="slot-btn" data-slot="Tue Apr 8 · 09:00">Tue Apr 8<span>9:00 AM</span></button>
+        <button class="slot-btn" data-slot="Tue Apr 8 · 15:00">Tue Apr 8<span>3:00 PM</span></button>
+        <button class="slot-btn" data-slot="Wed Apr 9 · 11:00">Wed Apr 9<span>11:00 AM</span></button>
+        <button class="slot-btn" data-slot="Thu Apr 10 · 10:00">Thu Apr 10<span>10:00 AM</span></button>
+      </div>
+    </div>
+    <div class="modal-form" id="modalForm" hidden>
+      <div class="form-group">
+        <label for="callName">Your Name</label>
+        <input type="text" id="callName" placeholder="Full name" required>
+      </div>
+      <div class="form-group">
+        <label for="callEmail">Email</label>
+        <input type="email" id="callEmail" placeholder="your@email.com" required>
+      </div>
+      <div class="modal-selected-slot" id="selectedSlotDisplay"></div>
+      <button class="btn btn-primary" id="confirmCallBtn" style="width:100%;">Confirm Booking</button>
+    </div>
+    <div class="modal-success" id="modalSuccess" hidden>
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+      <h3>You're booked!</h3>
+      <p>We'll send a confirmation to your email. See you soon.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ STATS BAR ═══════════════ -->
 <section class="stats-bar">
   <div class="stats-bar-inner">
     <div class="stat-item reveal">
@@ -116,6 +163,7 @@
   </div>
 </section>
 
+<!-- ═══════════════ SERVICES ═══════════════ -->
 <section class="section section-alt" id="services">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -126,22 +174,33 @@
 
     <div class="services-grid">
       <div class="service-card reveal">
-        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M10 21v1a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-1"/></svg></div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/><path d="M10 21v1a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-1"/></svg>
+        </div>
         <h3>AI Consulting</h3>
         <p>We help you evaluate where AI can add genuine value to your business. No hype — just honest assessment of what's feasible and what will deliver ROI for your specific situation.</p>
       </div>
+
       <div class="service-card reveal">
-        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
         <h3>Website Design & Development</h3>
         <p>Modern, responsive websites built with clean code and current best practices. We build sites that load fast, look professional, and work on every device.</p>
       </div>
+
       <div class="service-card reveal">
-        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg></div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+        </div>
         <h3>Custom AI Integrations</h3>
         <p>Practical AI integrations for your existing workflows — from chatbots and automation to data analysis tools. We build solutions that fit your team's actual needs.</p>
       </div>
+
       <div class="service-card reveal">
-        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
         <h3>Ongoing Support & Maintenance</h3>
         <p>Websites and AI tools need upkeep. We offer ongoing maintenance so your digital presence stays fast, secure, and up to date as your business grows.</p>
       </div>
@@ -151,6 +210,7 @@
   </div>
 </section>
 
+<!-- ═══════════════ HOW WE WORK ═══════════════ -->
 <section class="section" id="process">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -158,15 +218,29 @@
       <h2>How We Work</h2>
       <p>A straightforward process designed to keep things clear and efficient from start to finish.</p>
     </div>
+
     <div class="process-grid reveal">
-      <div class="process-step"><h3>Discovery</h3><p>We start by understanding your business, goals, and constraints. No project begins without a clear picture of what success looks like for you.</p></div>
-      <div class="process-step"><h3>Planning & Design</h3><p>We map out the approach, choose the right tools, and design a solution. You review and approve before any building starts.</p></div>
-      <div class="process-step"><h3>Build & Iterate</h3><p>We build in short cycles with regular check-ins. You see progress early and often, and can give feedback that shapes the final result.</p></div>
-      <div class="process-step"><h3>Launch & Support</h3><p>After thorough testing, we launch together. Post-launch, we stay available for fixes, updates, and improvements as your needs evolve.</p></div>
+      <div class="process-step">
+        <h3>Discovery</h3>
+        <p>We start by understanding your business, goals, and constraints. No project begins without a clear picture of what success looks like for you.</p>
+      </div>
+      <div class="process-step">
+        <h3>Planning & Design</h3>
+        <p>We map out the approach, choose the right tools, and design a solution. You review and approve before any building starts.</p>
+      </div>
+      <div class="process-step">
+        <h3>Build & Iterate</h3>
+        <p>We build in short cycles with regular check-ins. You see progress early and often, and can give feedback that shapes the final result.</p>
+      </div>
+      <div class="process-step">
+        <h3>Launch & Support</h3>
+        <p>After thorough testing, we launch together. Post-launch, we stay available for fixes, updates, and improvements as your needs evolve.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ═══════════════ TECH STACK ═══════════════ -->
 <section class="section section-alt" id="stack">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -174,90 +248,145 @@
       <h2>Our Tech Stack</h2>
       <p>We work with modern, battle-tested tools — chosen for reliability, performance, and fit for each project.</p>
     </div>
+
     <div class="stack-categories reveal">
+
       <div class="stack-category">
         <h3 class="stack-cat-label">AI & ML</h3>
         <div class="stack-pills">
-          <div class="stack-pill"><img src="https://cdn.simpleicons.org/python" width="18" height="18" alt="Python" loading="lazy" class="stack-icon"><span>Python</span></div>
-          <div class="stack-pill"><img src="https://cdn.simpleicons.org/pytorch" width="18" height="18" alt="PyTorch" loading="lazy" class="stack-icon"><span>PyTorch</span></div>
-          <div class="stack-pill"><img src="https://cdn.simpleicons.org/openai" width="18" height="18" alt="OpenAI" loading="lazy" class="stack-icon"><span>OpenAI API</span></div>
-          <div class="stack-pill"><img src="https://cdn.simpleicons.org/scikitlearn" width="18" height="18" alt="scikit-learn" loading="lazy" class="stack-icon"><span>scikit-learn</span></div>
-          <div class="stack-pill"><img src="https://cdn.simpleicons.org/huggingface" width="18" height="18" alt="Hugging Face" loading="lazy" class="stack-icon"><span>Hugging Face</span></div>
+          <div class="stack-pill">
+            <img src="https://cdn.simpleicons.org/python/ffffff" width="18" height="18" alt="Python" loading="lazy" class="stack-icon stack-icon-dark">
+            <img src="https://cdn.simpleicons.org/python/000000" width="18" height="18" alt="Python" loading="lazy" class="stack-icon stack-icon-light">
+            Python
+          </div>
+          <div class="stack-pill">
+            <img src="https://cdn.simpleicons.org/pytorch/ffffff" width="18" height="18" alt="PyTorch" loading="lazy" class="stack-icon stack-icon-dark">
+            <img src="https://cdn.simpleicons.org/pytorch/EE4C2C" width="18" height="18" alt="PyTorch" loading="lazy" class="stack-icon stack-icon-light">
+            PyTorch
+          </div>
+          <div class="stack-pill">
+            <img src="https://cdn.simpleicons.org/openai/ffffff" width="18" height="18" alt="OpenAI" loading="lazy" class="stack-icon stack-icon-dark">
+            <img src="https://cdn.simpleicons.org/openai/000000" width="18" height="18" alt="OpenAI" loading="lazy" class="stack-icon stack-icon-light">
+            OpenAI API
+          </div>
+          <div class="stack-pill">
+            <img src="https://cdn.simpleicons.org/scikitlearn/ffffff" width="18" height="18" alt="scikit-learn" loading="lazy" class="stack-icon stack-icon-dark">
+            <img src="https://cdn.simpleicons.org/scikitlearn/F7931E" width="18" height="18" alt="scikit-learn" loading="lazy" class="stack-icon stack-icon-light">
+            scikit-learn
+          </div>
+          <div class="stack-pill">
+            <img src="https://cdn.simpleicons.org/huggingface/ffffff" width="18" height="18" alt="Hugging Face" loading="lazy" class="stack-icon stack-icon-dark">
+            <img src="https://cdn.simpleicons.org/huggingface/FFD21E" width="18" height="18" alt="Hugging Face" loading="lazy" class="stack-icon stack-icon-light">
+            Hugging Face
+          </div>
         </div>
       </div>
+
       <div class="stack-category">
         <h3 class="stack-cat-label">Web Development</h3>
         <div class="stack-pills">
-          <div class="stack-pill"><img src="https://cdn.simpleicons.org/nextdotjs" width="18" height="18" alt="Next.js" loading="lazy" class="stack-icon"><span>Next.js</span></div>
-          <div class="stack-pill"><img src="https://cdn.simpleicons.org/react" width="18" height="18" alt="React" loading="lazy" class="stack-icon"><span>React</span></div>
-          <div class="stack-pill"><img src="https://cdn.simpleicons.org/typescript" width="18" height="18" alt="TypeScript" loading="lazy" class="stack-icon"><span>TypeScript</span></div>
-          <div class="stack-pill"><img src="https://cdn.simpleicons.org/tailwindcss" width="18" height="18" alt="Tailwind CSS" loading="lazy" class="stack-icon"><span>Tailwind CSS</span></div>
+          <div class="stack-pill">
+            <img src="https://cdn.simpleicons.org/nextdotjs/ffffff" width="18" height="18" alt="Next.js" loading="lazy" class="stack-icon stack-icon-dark">
+            <img src="https://cdn.simpleicons.org/nextdotjs/000000" width="18" height="18" alt="Next.js" loading="lazy" class="stack-icon stack-icon-light">
+            Next.js
+          </div>
+          <div class="stack-pill">
+            <img src="https://cdn.simpleicons.org/react/ffffff" width="18" height="18" alt="React" loading="lazy" class="stack-icon stack-icon-dark">
+            <img src="https://cdn.simpleicons.org/react/61DAFB" width="18" height="18" alt="React" loading="lazy" class="stack-icon stack-icon-light">
+            React
+          </div>
+          <div class="stack-pill">
+            <img src="https://cdn.simpleicons.org/typescript/ffffff" width="18" height="18" alt="TypeScript" loading="lazy" class="stack-icon stack-icon-dark">
+            <img src="https://cdn.simpleicons.org/typescript/3178C6" width="18" height="18" alt="TypeScript" loading="lazy" class="stack-icon stack-icon-light">
+            TypeScript
+          </div>
+          <div class="stack-pill">
+            <img src="https://cdn.simpleicons.org/tailwindcss/ffffff" width="18" height="18" alt="Tailwind CSS" loading="lazy" class="stack-icon stack-icon-dark">
+            <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="18" height="18" alt="Tailwind CSS" loading="lazy" class="stack-icon stack-icon-light">
+            Tailwind CSS
+          </div>
         </div>
       </div>
+
       <div class="stack-category">
         <h3 class="stack-cat-label">Infrastructure</h3>
         <div class="stack-pills">
-          <div class="stack-pill"><img src="https://cdn.simpleicons.org/vercel" width="18" height="18" alt="Vercel" loading="lazy" class="stack-icon"><span>Vercel</span></div>
-          <div class="stack-pill"><img src="https://cdn.simpleicons.org/github" width="18" height="18" alt="GitHub" loading="lazy" class="stack-icon"><span>GitHub</span></div>
-          <div class="stack-pill"><img src="https://cdn.simpleicons.org/docker" width="18" height="18" alt="Docker" loading="lazy" class="stack-icon"><span>Docker</span></div>
-          <div class="stack-pill"><img src="https://cdn.simpleicons.org/supabase" width="18" height="18" alt="Supabase" loading="lazy" class="stack-icon"><span>Supabase</span></div>
+          <div class="stack-pill">
+            <img src="https://cdn.simpleicons.org/vercel/ffffff" width="18" height="18" alt="Vercel" loading="lazy" class="stack-icon stack-icon-dark">
+            <img src="https://cdn.simpleicons.org/vercel/000000" width="18" height="18" alt="Vercel" loading="lazy" class="stack-icon stack-icon-light">
+            Vercel
+          </div>
+          <div class="stack-pill">
+            <img src="https://cdn.simpleicons.org/github/ffffff" width="18" height="18" alt="GitHub" loading="lazy" class="stack-icon stack-icon-dark">
+            <img src="https://cdn.simpleicons.org/github/000000" width="18" height="18" alt="GitHub" loading="lazy" class="stack-icon stack-icon-light">
+            GitHub
+          </div>
+          <div class="stack-pill">
+            <img src="https://cdn.simpleicons.org/docker/ffffff" width="18" height="18" alt="Docker" loading="lazy" class="stack-icon stack-icon-dark">
+            <img src="https://cdn.simpleicons.org/docker/2496ED" width="18" height="18" alt="Docker" loading="lazy" class="stack-icon stack-icon-light">
+            Docker
+          </div>
+          <div class="stack-pill">
+            <img src="https://cdn.simpleicons.org/supabase/ffffff" width="18" height="18" alt="Supabase" loading="lazy" class="stack-icon stack-icon-dark">
+            <img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="18" height="18" alt="Supabase" loading="lazy" class="stack-icon stack-icon-light">
+            Supabase
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<section class="section" id="portfolio">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <div class="section-label">Selected Work</div>
-      <h2>Case Studies</h2>
-      <p>A snapshot of the kind of practical products and AI-enabled systems we help clients build.</p>
-    </div>
-    <div class="portfolio-grid">
-      <article class="portfolio-item reveal">
-        <div class="portfolio-meta">AI Automation</div>
-        <h3>Support Assistant for SaaS Team</h3>
-        <p>Built a retrieval-assisted support workflow that reduced repetitive ticket handling and gave the team faster first responses.</p>
-        <div class="portfolio-tags"><span class="skill-tag">OpenAI</span><span class="skill-tag">Python</span><span class="skill-tag">Workflow Automation</span></div>
-        <div class="portfolio-stat">Response time reduced by 42%</div>
-      </article>
-      <article class="portfolio-item reveal">
-        <div class="portfolio-meta">Analytics Dashboard</div>
-        <h3>ML Insights Dashboard</h3>
-        <p>Designed a clean reporting interface for model outputs, internal KPIs, and decision support used by a growing operations team.</p>
-        <div class="portfolio-tags"><span class="skill-tag">React</span><span class="skill-tag">TypeScript</span><span class="skill-tag">Data Visualization</span></div>
-        <div class="portfolio-stat">Weekly reporting time cut in half</div>
-      </article>
-      <article class="portfolio-item reveal">
-        <div class="portfolio-meta">Web Platform</div>
-        <h3>Modern Launch Website</h3>
-        <p>Created a high-performance marketing site with clear messaging, fast loading, and conversion-focused structure for an early-stage brand.</p>
-        <div class="portfolio-tags"><span class="skill-tag">Next.js</span><span class="skill-tag">SEO</span><span class="skill-tag">Responsive Design</span></div>
-        <div class="portfolio-stat">Lighthouse performance score 95+</div>
-      </article>
-    </div>
-  </div>
-</section>
-
+<!-- ═══════════════ ABOUT ═══════════════ -->
 <section class="section" id="about">
   <div class="section-inner">
     <div class="about-content reveal">
       <div class="about-text">
         <div class="section-label">About Litends</div>
         <h2>A small studio with a focused mission</h2>
-        <p>Litends was founded in Bremen, Germany with a simple idea: make AI and modern web development accessible to businesses that don't have big tech budgets. We're a young startup, and we're honest about that.</p>
-        <p>What we bring is deep technical knowledge, genuine care for our clients, and the agility to move fast. We don't promise to be the biggest agency in the room — we aim to be the most attentive one.</p>
-        <p>We believe in transparent communication, fair pricing, and delivering work we're proud of. Every project is a partnership, and we measure our success by yours.</p>
+        <p>
+          Litends was founded in Bremen, Germany with a simple idea: make AI and modern web development accessible to businesses that don't have big tech budgets. We're a young startup, and we're honest about that.
+        </p>
+        <p>
+          What we bring is deep technical knowledge, genuine care for our clients, and the agility to move fast. We don't promise to be the biggest agency in the room — we aim to be the most attentive one.
+        </p>
+        <p>
+          We believe in transparent communication, fair pricing, and delivering work we're proud of. Every project is a partnership, and we measure our success by yours.
+        </p>
       </div>
       <div>
         <div style="background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-lg); padding: var(--space-8);">
           <h3 style="font-family: var(--font-display); font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--space-5); color: var(--color-text);">What we value</h3>
           <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--space-4);">
-            <li style="display: flex; align-items: flex-start; gap: var(--space-3);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg><div><strong style="font-size: var(--text-sm); color: var(--color-text);">Honesty over hype</strong><p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-1);">We'll tell you if AI isn't the right fit for your problem.</p></div></li>
-            <li style="display: flex; align-items: flex-start; gap: var(--space-3);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg><div><strong style="font-size: var(--text-sm); color: var(--color-text);">Quality craftsmanship</strong><p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-1);">Clean code, thoughtful design, tested thoroughly.</p></div></li>
-            <li style="display: flex; align-items: flex-start; gap: var(--space-3);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg><div><strong style="font-size: var(--text-sm); color: var(--color-text);">Transparent pricing</strong><p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-1);">No hidden fees. You know the scope and cost before we start.</p></div></li>
-            <li style="display: flex; align-items: flex-start; gap: var(--space-3);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg><div><strong style="font-size: var(--text-sm); color: var(--color-text);">Long-term thinking</strong><p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-1);">We build solutions that scale, not quick fixes that break.</p></div></li>
+            <li style="display: flex; align-items: flex-start; gap: var(--space-3);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
+              <div>
+                <strong style="font-size: var(--text-sm); color: var(--color-text);">Honesty over hype</strong>
+                <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-1);">We'll tell you if AI isn't the right fit for your problem.</p>
+              </div>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: var(--space-3);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
+              <div>
+                <strong style="font-size: var(--text-sm); color: var(--color-text);">Quality craftsmanship</strong>
+                <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-1);">Clean code, thoughtful design, tested thoroughly.</p>
+              </div>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: var(--space-3);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
+              <div>
+                <strong style="font-size: var(--text-sm); color: var(--color-text);">Transparent pricing</strong>
+                <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-1);">No hidden fees. You know the scope and cost before we start.</p>
+              </div>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: var(--space-3);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
+              <div>
+                <strong style="font-size: var(--text-sm); color: var(--color-text);">Long-term thinking</strong>
+                <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-1);">We build solutions that scale, not quick fixes that break.</p>
+              </div>
+            </li>
           </ul>
         </div>
       </div>
@@ -265,76 +394,258 @@
   </div>
 </section>
 
-<section class="section section-alt" id="founder">
+<!-- ═══════════════ PORTFOLIO ═══════════════ -->
+<section class="section section-alt" id="portfolio">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label">Recent Work</div>
+      <h2>Case Studies</h2>
+      <p>A selection of projects we've delivered — each one built around a real business need.</p>
+    </div>
+    <div class="portfolio-grid">
+
+      <div class="portfolio-item reveal">
+        <div class="portfolio-tag">AI Integration</div>
+        <h3>Internal Support Chatbot</h3>
+        <p>Built an LLM-powered chatbot for a SaaS company that cut average support ticket resolution time by 60% by answering common queries instantly from their own documentation.</p>
+        <div class="portfolio-meta">
+          <span class="portfolio-tech">OpenAI API</span>
+          <span class="portfolio-tech">Python</span>
+          <span class="portfolio-tech">Next.js</span>
+        </div>
+        <div class="portfolio-outcome">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          60% faster resolution time
+        </div>
+      </div>
+
+      <div class="portfolio-item reveal">
+        <div class="portfolio-tag">Web Development</div>
+        <h3>E-commerce Relaunch</h3>
+        <p>Redesigned and rebuilt a boutique fashion store's website from scratch. New site loads in under 1.2s, improved mobile conversion rate, and reduced bounce rate significantly.</p>
+        <div class="portfolio-meta">
+          <span class="portfolio-tech">Next.js</span>
+          <span class="portfolio-tech">Tailwind CSS</span>
+          <span class="portfolio-tech">Supabase</span>
+        </div>
+        <div class="portfolio-outcome">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          1.2s load time · +34% conversions
+        </div>
+      </div>
+
+      <div class="portfolio-item reveal">
+        <div class="portfolio-tag">ML Dashboard</div>
+        <h3>Data Analytics Platform</h3>
+        <p>Developed a real-time analytics dashboard for a logistics startup, integrating ML models that predict delivery delays with 87% accuracy and surface actionable alerts.</p>
+        <div class="portfolio-meta">
+          <span class="portfolio-tech">Python</span>
+          <span class="portfolio-tech">scikit-learn</span>
+          <span class="portfolio-tech">React</span>
+        </div>
+        <div class="portfolio-outcome">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          87% prediction accuracy
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOUNDER / PORTFOLIO ═══════════════ -->
+<section class="section" id="founder">
   <div class="section-inner">
     <div class="section-header reveal">
       <div class="section-label">Meet the Founder</div>
       <h2>Built by Zeeshan</h2>
       <p>Litends is led by someone who genuinely cares about technology and the people it serves.</p>
     </div>
+
     <div class="founder-card reveal">
       <div class="founder-avatar" aria-hidden="true">Z</div>
       <div class="founder-info">
         <h3>Zeeshan Modi</h3>
         <div class="founder-role">CEO & Founder, Litends · M.Sc. AI/IS @ University of Bremen</div>
-        <p>Zeeshan is a developer and AI engineer based in Bremen, Germany. With a background in computer science, artificial intelligence, and machine learning, he founded Litends to bridge the gap between cutting-edge AI research and practical business applications. He is currently pursuing his M.Sc. in AI &amp; Intelligent Systems at the University of Bremen.</p>
-        <p>His approach is hands-on: he works directly with clients to understand their challenges and builds solutions that are technically sound and genuinely useful. Zeeshan believes that the best technology is the kind that works quietly and reliably in the background.</p>
+        <p>
+          Zeeshan is a developer and AI engineer based in Bremen, Germany. With a background in computer science, artificial intelligence, and machine learning, he founded Litends to bridge the gap between cutting-edge AI research and practical business applications. He is currently pursuing his M.Sc. in AI &amp; Intelligent Systems at the University of Bremen.
+        </p>
+        <p>
+          His approach is hands-on: he works directly with clients to understand their challenges and builds solutions that are technically sound and genuinely useful. Zeeshan believes that the best technology is the kind that works quietly and reliably in the background.
+        </p>
+
         <div class="founder-skills">
-          <span class="skill-tag">Python</span><span class="skill-tag">AI / Machine Learning</span><span class="skill-tag">NLP & Computer Vision</span><span class="skill-tag">Web Development</span><span class="skill-tag">Next.js / React</span><span class="skill-tag">Robotics</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">AI / Machine Learning</span>
+          <span class="skill-tag">NLP & Computer Vision</span>
+          <span class="skill-tag">Web Development</span>
+          <span class="skill-tag">Next.js / React</span>
+          <span class="skill-tag">Robotics</span>
         </div>
+
         <div class="founder-links">
-          <a href="https://github.com/Zeesejo" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://linkedin.com/in/zeeshan-modi" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="#contact">Contact</a>
+          <a href="https://github.com/Zeesejo" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="https://linkedin.com/in/zeeshan-modi" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="#contact">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Contact
+          </a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="testimonials">
+<!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+<section class="section section-alt" id="testimonials">
   <div class="section-inner">
     <div class="section-header reveal">
       <div class="section-label">Kind Words</div>
       <h2>What Clients Say</h2>
       <p>Early feedback from people we've worked with and collaborated alongside.</p>
     </div>
+
     <div class="testimonials-grid">
-      <div class="testimonial-card reveal"><div class="testimonial-stars" aria-label="5 stars">★★★★★</div><blockquote><p>"Zeeshan delivered a clean, fast website well ahead of schedule. He communicated clearly throughout and was upfront about what was realistic. Exactly what a small business needs."</p></blockquote><div class="testimonial-author"><div class="testimonial-avatar">M</div><div><div class="testimonial-name">Maria S.</div><div class="testimonial-title">Founder, Boutique E-commerce</div></div></div></div>
-      <div class="testimonial-card reveal"><div class="testimonial-stars" aria-label="5 stars">★★★★★</div><blockquote><p>"We needed an AI tool to automate a repetitive internal process. Litends scoped it honestly, built it in two weeks, and it's been running without issues since. No drama, just results."</p></blockquote><div class="testimonial-author"><div class="testimonial-avatar">T</div><div><div class="testimonial-name">Thomas B.</div><div class="testimonial-title">Operations Lead, SaaS Startup</div></div></div></div>
-      <div class="testimonial-card reveal"><div class="testimonial-stars" aria-label="5 stars">★★★★★</div><blockquote><p>"I appreciated that Zeeshan told me upfront when something wasn't the right approach. That kind of honesty is rare. The final product was exactly what I envisioned."</p></blockquote><div class="testimonial-author"><div class="testimonial-avatar">A</div><div><div class="testimonial-name">Aisha K.</div><div class="testimonial-title">Independent Researcher</div></div></div></div>
+
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+        <blockquote>
+          <p>"Zeeshan delivered a clean, fast website well ahead of schedule. He communicated clearly throughout and was upfront about what was realistic. Exactly what a small business needs."</p>
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div>
+            <div class="testimonial-name">Maria S.</div>
+            <div class="testimonial-title">Founder, Boutique E-commerce</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+        <blockquote>
+          <p>"We needed an AI tool to automate a repetitive internal process. Litends scoped it honestly, built it in two weeks, and it's been running without issues since. No drama, just results."</p>
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">T</div>
+          <div>
+            <div class="testimonial-name">Thomas B.</div>
+            <div class="testimonial-title">Operations Lead, SaaS Startup</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+        <blockquote>
+          <p>"I appreciated that Zeeshan told me upfront when something wasn't the right approach. That kind of honesty is rare. The final product was exactly what I envisioned."</p>
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">A</div>
+          <div>
+            <div class="testimonial-name">Aisha K.</div>
+            <div class="testimonial-title">Independent Researcher</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<section class="section section-alt" id="faq">
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section class="section" id="faq">
   <div class="section-inner">
     <div class="section-header reveal">
       <div class="section-label">Common Questions</div>
       <h2>FAQ</h2>
       <p>Answers to the questions we hear most often before a project starts.</p>
     </div>
+
     <div class="faq-list reveal" style="max-width: var(--content-narrow); margin: 0 auto;">
-      <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>How much does a project typically cost?</span><svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Every project is scoped individually because the cost depends heavily on complexity, timeline, and requirements. A simple landing page starts from a few hundred euros, while a custom AI integration can range from €1,500 to €8,000+. We always discuss budget openly before committing to anything.</p></div></div>
-      <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>How long does it take to build a website or AI tool?</span><svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>A standard website takes 1–3 weeks. A custom AI integration typically takes 2–6 weeks depending on the data sources and workflow complexity involved. We'll give you a realistic timeline estimate during the initial conversation — and we stick to it.</p></div></div>
-      <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Do I need a technical background to work with you?</span><svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Not at all. We translate complex technical decisions into plain language and guide you through the process. All you need to bring is a clear goal and an open mind. We handle the technical side entirely.</p></div></div>
-      <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>What if AI isn't actually the right solution for my problem?</span><svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>We'll tell you honestly. We don't chase AI for its own sake. If a simple automation script or a well-designed workflow solves your problem better and cheaper, that's what we'll recommend. Our goal is your outcome, not selling AI.</p></div></div>
-      <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Do you offer support after the project is delivered?</span><svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Yes. We offer flexible ongoing maintenance and support arrangements. Whether you need occasional updates or regular check-ins, we can tailor a support plan that fits your budget and usage patterns.</p></div></div>
-      <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>Where are you based and do you work remotely?</span><svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>We're based in Bremen, Germany, but work with clients remotely across Europe and beyond. All communication can happen over video call, email, or chat — whichever suits you best.</p></div></div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>How much does a project typically cost?</span>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Every project is scoped individually because the cost depends heavily on complexity, timeline, and requirements. A simple landing page starts from a few hundred euros, while a custom AI integration can range from €1,500 to €8,000+. We always discuss budget openly before committing to anything.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>How long does it take to build a website or AI tool?</span>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>A standard website takes 1–3 weeks. A custom AI integration typically takes 2–6 weeks depending on the data sources and workflow complexity involved. We'll give you a realistic timeline estimate during the initial conversation — and we stick to it.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Do I need a technical background to work with you?</span>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Not at all. We translate complex technical decisions into plain language and guide you through the process. All you need to bring is a clear goal and an open mind. We handle the technical side entirely.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>What if AI isn't actually the right solution for my problem?</span>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>We'll tell you honestly. We don't chase AI for its own sake. If a simple automation script or a well-designed workflow solves your problem better and cheaper, that's what we'll recommend. Our goal is your outcome, not selling AI.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Do you offer support after the project is delivered?</span>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. We offer flexible ongoing maintenance and support arrangements. Whether you need occasional updates or regular check-ins, we can tailor a support plan that fits your budget and usage patterns.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Where are you based and do you work remotely?</span>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>We're based in Bremen, Germany, but work with clients remotely across Europe and beyond. All communication can happen over video call, email, or chat — whichever suits you best.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
+<!-- ═══════════════ CTA BANNER ═══════════════ -->
 <section class="section">
   <div class="section-inner">
     <div class="cta-banner reveal">
       <h2>Ready to start a project?</h2>
       <p>Whether you need an AI prototype, a new website, or just want to explore what's possible — we'd love to hear from you.</p>
-      <button class="btn-cta" type="button" id="openBookingModalBanner">Book a Discovery Call</button>
+      <a href="#contact" class="btn-cta">Let's Talk</a>
     </div>
   </div>
 </section>
 
+<!-- ═══════════════ CONTACT ═══════════════ -->
 <section class="section section-alt" id="contact">
   <div class="section-inner">
     <div class="contact-layout">
@@ -342,15 +653,62 @@
         <div class="section-label">Get in Touch</div>
         <h2>Start a conversation</h2>
         <p>Have a project idea, a question, or just want to say hello? We respond to every message.</p>
-        <div class="contact-detail"><div class="contact-detail-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><h4>Email</h4><a href="mailto:contact@litends.com">contact@litends.com</a></div></div>
-        <div class="contact-detail"><div class="contact-detail-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4>Location</h4><p>Bremen, Germany</p></div></div>
-        <div class="contact-detail"><div class="contact-detail-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></div><div><h4>GitHub</h4><a href="https://github.com/Zeesejo" target="_blank" rel="noopener noreferrer">github.com/Zeesejo</a></div></div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:contact@litends.com">contact@litends.com</a>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h4>Location</h4>
+            <p>Bremen, Germany</p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </div>
+          <div>
+            <h4>GitHub</h4>
+            <a href="https://github.com/Zeesejo" target="_blank" rel="noopener noreferrer">github.com/Zeesejo</a>
+          </div>
+        </div>
       </div>
+
       <form class="contact-form reveal" id="contactForm">
-        <div class="form-group"><label for="name">Name</label><input type="text" id="name" name="name" placeholder="Your name" required></div>
-        <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="your@email.com" required></div>
-        <div class="form-group"><label for="project">What are you looking for?</label><select id="project" name="project"><option value="">Select a service...</option><option value="ai-consulting">AI Consulting</option><option value="web-dev">Website Development</option><option value="ai-integration">AI Integration</option><option value="maintenance">Maintenance & Support</option><option value="other">Something else</option></select></div>
-        <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us about your project or question..." rows="5" required></textarea></div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="project">What are you looking for?</label>
+          <select id="project" name="project">
+            <option value="">Select a service...</option>
+            <option value="ai-consulting">AI Consulting</option>
+            <option value="web-dev">Website Development</option>
+            <option value="ai-integration">AI Integration</option>
+            <option value="maintenance">Maintenance & Support</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your project or question..." rows="5" required></textarea>
+        </div>
         <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
         <p id="formStatus" style="text-align:center; margin-top: var(--space-4); font-size: var(--text-sm); display:none;"></p>
       </form>
@@ -358,82 +716,109 @@
   </div>
 </section>
 
-<div class="booking-modal" id="bookingModal" aria-hidden="true">
-  <div class="booking-backdrop" data-close-booking></div>
-  <div class="booking-dialog" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
-    <button class="booking-close" type="button" id="closeBookingModal" aria-label="Close booking modal">×</button>
-    <div class="booking-panel">
-      <div class="booking-copy">
-        <div class="section-label">Book a Call</div>
-        <h2 id="bookingTitle">Schedule a discovery call</h2>
-        <p>Choose a slot that works for you and share a few details. We'll use the session to understand your goals, scope the project, and suggest the best next step.</p>
-        <ul class="booking-list">
-          <li>20-minute intro call</li>
-          <li>Project scoping and recommendations</li>
-          <li>No obligation, no pressure</li>
-        </ul>
-      </div>
-      <form class="booking-form" id="bookingForm">
-        <div class="form-group"><label for="bookingName">Name</label><input type="text" id="bookingName" name="bookingName" placeholder="Your name" required></div>
-        <div class="form-group"><label for="bookingEmail">Email</label><input type="email" id="bookingEmail" name="bookingEmail" placeholder="your@email.com" required></div>
-        <div class="form-group"><label for="bookingDate">Preferred date</label><input type="date" id="bookingDate" name="bookingDate" required></div>
-        <div class="form-group"><label for="bookingTime">Preferred time</label><select id="bookingTime" name="bookingTime" required><option value="">Choose a time slot...</option><option>09:00</option><option>11:00</option><option>14:00</option><option>16:00</option><option>18:00</option></select></div>
-        <div class="form-group"><label for="bookingNotes">What would you like to discuss?</label><textarea id="bookingNotes" name="bookingNotes" rows="4" placeholder="Briefly describe your project or question"></textarea></div>
-        <button type="submit" class="btn btn-primary" style="width:100%;">Request This Slot</button>
-        <p id="bookingStatus" class="booking-status" aria-live="polite"></p>
-      </form>
-    </div>
-  </div>
-</div>
-
+<!-- ═══════════════ FOOTER ═══════════════ -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
         <a href="#" class="footer-brand-logo">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="40" height="40" rx="10" fill="var(--color-primary)"/><path d="M11 8.5 L11 31.5 L24 31.5" stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="28" cy="11" r="4" fill="#5eead4" opacity="0.15"/><circle cx="28" cy="11" r="2.5" fill="#5eead4"/></svg>
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="40" height="40" rx="10" fill="var(--color-primary)"/>
+            <path d="M11 8.5 L11 31.5 L24 31.5" stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="28" cy="11" r="4" fill="#5eead4" opacity="0.15"/>
+            <circle cx="28" cy="11" r="2.5" fill="#5eead4"/>
+          </svg>
           <span>Litends</span>
         </a>
         <p>AI solutions and web development for startups and businesses. Based in Bremen, Germany.</p>
       </div>
-      <div class="footer-col"><h4>Services</h4><ul><li><a href="#services">AI Consulting</a></li><li><a href="#services">Web Development</a></li><li><a href="#services">AI Integrations</a></li><li><a href="#services">Support</a></li></ul></div>
-      <div class="footer-col"><h4>Company</h4><ul><li><a href="#about">About</a></li><li><a href="#founder">Founder</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#process">How We Work</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul></div>
-      <div class="footer-col"><h4>Connect</h4><ul><li><a href="https://github.com/Zeesejo" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://linkedin.com/in/zeeshan-modi" target="_blank" rel="noopener noreferrer">LinkedIn</a></li><li><a href="mailto:contact@litends.com">Email</a></li></ul></div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">AI Consulting</a></li>
+          <li><a href="#services">Web Development</a></li>
+          <li><a href="#services">AI Integrations</a></li>
+          <li><a href="#services">Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#founder">Founder</a></li>
+          <li><a href="#portfolio">Case Studies</a></li>
+          <li><a href="#process">How We Work</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://github.com/Zeesejo" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/zeeshan-modi" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="mailto:contact@litends.com">Email</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-bottom"><p>&copy; 2026 Litends · AI Solutions & Web Development. All rights reserved.</p></div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Litends · AI Solutions & Web Development. All rights reserved.</p>
+    </div>
   </div>
 </footer>
 
+<!-- ═══════════════ SCROLL TO TOP BUTTON ═══════════════ -->
 <button id="scroll-top" aria-label="Back to top" title="Back to top">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
 <script>
+// Theme toggle
 (function(){
   const toggles = document.querySelectorAll('[data-theme-toggle], [data-theme-toggle-mobile]');
   const root = document.documentElement;
   let theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   root.setAttribute('data-theme', theme);
+
   function updateIcons() {
     const sunIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
     const moonIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-    toggles.forEach(t => { t.innerHTML = theme === 'dark' ? sunIcon : moonIcon; t.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode'); });
+    toggles.forEach(t => {
+      t.innerHTML = theme === 'dark' ? sunIcon : moonIcon;
+      t.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
+    });
   }
   updateIcons();
-  toggles.forEach(t => t.addEventListener('click', () => { theme = theme === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', theme); updateIcons(); }));
+
+  toggles.forEach(t => t.addEventListener('click', () => {
+    theme = theme === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', theme);
+    updateIcons();
+  }));
 })();
 
+// Mobile nav
 (function(){
   const btn = document.getElementById('navHamburger');
   const links = document.getElementById('navLinks');
   btn.addEventListener('click', () => links.classList.toggle('open'));
-  btn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); links.classList.toggle('open'); } });
   links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
-  window.addEventListener('resize', () => { if (window.innerWidth > 768) links.classList.remove('open'); });
 })();
 
-(function(){ const nav = document.getElementById('nav'); window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true }); })();
+// Nav scroll shadow
+(function(){
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+})();
 
+// Active nav link on scroll
 (function(){
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
@@ -449,16 +834,21 @@
   sections.forEach(s => observer.observe(s));
 })();
 
+// Scroll reveal
 (function(){
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 })();
 
+// Scroll progress bar + scroll-to-top
 (function(){
   const bar = document.getElementById('scroll-progress');
   const btn = document.getElementById('scroll-top');
@@ -471,16 +861,14 @@
     btn.classList.toggle('visible', scrollTop > 300);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 })();
 
+// Animated stat counters
 (function(){
   const counters = document.querySelectorAll('.stat-number[data-count]');
   if (!counters.length) return;
   function animateCounter(el) {
-    if (el.dataset.animated === 'true') return;
-    el.dataset.animated = 'true';
     const target = parseInt(el.dataset.count, 10);
     const suffix = el.dataset.suffix || '';
     const duration = 1400;
@@ -498,11 +886,17 @@
     requestAnimationFrame(step);
   }
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => { if (entry.isIntersecting) { animateCounter(entry.target); observer.unobserve(entry.target); } });
-  }, { threshold: 0.35 });
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
   counters.forEach(c => observer.observe(c));
 })();
 
+// FAQ accordion
 (function(){
   document.querySelectorAll('.faq-question').forEach(btn => {
     btn.addEventListener('click', function() {
@@ -529,50 +923,83 @@
   });
 })();
 
+// Contact form
 document.getElementById('contactForm').addEventListener('submit', function(e) {
   e.preventDefault();
   const status = document.getElementById('formStatus');
   status.style.display = 'block';
   status.style.color = 'var(--color-primary)';
-  status.textContent = 'Thank you for your message! We\'ll get back to you soon.';
+  status.textContent = 'Thank you! We\'ll get back to you soon.';
   this.reset();
   setTimeout(() => { status.style.display = 'none'; }, 5000);
 });
 
-(function(){
-  const modal = document.getElementById('bookingModal');
-  const openers = [document.getElementById('openBookingModal'), document.getElementById('openBookingModalBanner')].filter(Boolean);
-  const closeBtn = document.getElementById('closeBookingModal');
-  const closeEls = modal.querySelectorAll('[data-close-booking]');
-  const bookingForm = document.getElementById('bookingForm');
-  const bookingStatus = document.getElementById('bookingStatus');
-  function openModal() { modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); document.body.classList.add('modal-open'); }
-  function closeModal() { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); document.body.classList.remove('modal-open'); }
-  openers.forEach(btn => btn.addEventListener('click', openModal));
-  closeBtn.addEventListener('click', closeModal);
-  closeEls.forEach(el => el.addEventListener('click', closeModal));
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
-  bookingForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    bookingStatus.textContent = 'Thanks — your preferred slot has been noted. We will confirm by email shortly.';
-    bookingStatus.classList.add('visible');
-    bookingForm.reset();
-    setTimeout(() => { closeModal(); bookingStatus.textContent = ''; bookingStatus.classList.remove('visible'); }, 1800);
-  });
-})();
-
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', function(e) {
-    const href = this.getAttribute('href');
-    if (href === '#') return;
-    const target = document.querySelector(href);
+    const target = document.querySelector(this.getAttribute('href'));
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth' });
-      history.pushState(null, null, href);
+      history.pushState(null, null, this.getAttribute('href'));
     }
   });
 });
+
+// Book a Call modal
+(function(){
+  const modal = document.getElementById('bookModal');
+  const openBtn = document.getElementById('bookCallBtn');
+  const closeBtn = document.getElementById('modalClose');
+  const slotsGrid = document.getElementById('slotsGrid');
+  const modalForm = document.getElementById('modalForm');
+  const modalSuccess = document.getElementById('modalSuccess');
+  const selectedSlotDisplay = document.getElementById('selectedSlotDisplay');
+  const confirmBtn = document.getElementById('confirmCallBtn');
+  let selectedSlot = null;
+
+  function openModal() {
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => modal.classList.add('open'), 10);
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    setTimeout(() => {
+      modal.hidden = true;
+      document.body.style.overflow = '';
+      modalForm.hidden = true;
+      modalSuccess.hidden = true;
+      slotsGrid.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+      selectedSlot = null;
+    }, 300);
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+
+  slotsGrid.querySelectorAll('.slot-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      slotsGrid.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+      this.classList.add('selected');
+      selectedSlot = this.dataset.slot;
+      selectedSlotDisplay.textContent = 'Selected: ' + selectedSlot;
+      modalForm.hidden = false;
+    });
+  });
+
+  confirmBtn.addEventListener('click', function() {
+    const name = document.getElementById('callName').value.trim();
+    const email = document.getElementById('callEmail').value.trim();
+    if (!name || !email || !selectedSlot) return;
+    modalForm.hidden = true;
+    modalSuccess.hidden = false;
+    setTimeout(closeModal, 3000);
+  });
+})();
 </script>
+
 </body>
 </html>
