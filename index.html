@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
 <title>Litends — AI Solutions & Web Development</title>
 <meta name="description" content="Litends helps startups and businesses build AI-powered tools and modern websites. Based in Bremen, Germany. Founded by Zeeshan.">
 <meta name="keywords" content="AI consulting, web development, AI integration, Bremen, Germany, machine learning, startup">
@@ -11,8 +12,14 @@
 <meta property="og:description" content="Litends helps startups and businesses build AI-powered tools and modern websites.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://litends.com">
+<meta property="og:image" content="https://litends.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Litends — AI Solutions & Web Development">
+<meta name="twitter:description" content="AI-powered tools and modern websites for startups. Based in Bremen, Germany.">
+<meta name="twitter:image" content="https://litends.com/assets/og-image.png">
 
 <!-- Fonts -->
+<link rel="preconnect" href="https://api.fontshare.com">
 <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="./base.css">
@@ -60,6 +67,8 @@
       <li><a href="#home" class="active">Home</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#stack">Stack</a></li>
+      <li><a href="#portfolio">Work</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#founder">Founder</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -109,14 +118,7 @@
     </div>
     <div class="modal-slots">
       <div class="slots-label">Available this week</div>
-      <div class="slots-grid" id="slotsGrid">
-        <button class="slot-btn" data-slot="Mon Apr 7 · 10:00">Mon Apr 7<span>10:00 AM</span></button>
-        <button class="slot-btn" data-slot="Mon Apr 7 · 14:00">Mon Apr 7<span>2:00 PM</span></button>
-        <button class="slot-btn" data-slot="Tue Apr 8 · 09:00">Tue Apr 8<span>9:00 AM</span></button>
-        <button class="slot-btn" data-slot="Tue Apr 8 · 15:00">Tue Apr 8<span>3:00 PM</span></button>
-        <button class="slot-btn" data-slot="Wed Apr 9 · 11:00">Wed Apr 9<span>11:00 AM</span></button>
-        <button class="slot-btn" data-slot="Thu Apr 10 · 10:00">Thu Apr 10<span>10:00 AM</span></button>
-      </div>
+      <div class="slots-grid" id="slotsGrid"></div>
     </div>
     <div class="modal-form" id="modalForm" hidden>
       <div class="form-group">
@@ -453,7 +455,7 @@
   </div>
 </section>
 
-<!-- ═══════════════ FOUNDER / PORTFOLIO ═══════════════ -->
+<!-- ═══════════════ FOUNDER ═══════════════ -->
 <section class="section" id="founder">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -489,7 +491,7 @@
             GitHub
           </a>
           <a href="https://linkedin.com/in/zeeshan-modi" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 23.2 0 22.222 0h.003z"/></svg>
             LinkedIn
           </a>
           <a href="#contact">
@@ -512,7 +514,6 @@
     </div>
 
     <div class="testimonials-grid">
-
       <div class="testimonial-card reveal">
         <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
         <blockquote>
@@ -554,7 +555,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -685,7 +685,9 @@
         </div>
       </div>
 
-      <form class="contact-form reveal" id="contactForm">
+      <!-- Formspree-powered contact form — replace YOUR_FORM_ID with your Formspree form ID -->
+      <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="hidden" name="_subject" value="New message from Litends.com">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" placeholder="Your name" required>
@@ -750,6 +752,7 @@
           <li><a href="#founder">Founder</a></li>
           <li><a href="#portfolio">Case Studies</a></li>
           <li><a href="#process">How We Work</a></li>
+          <li><a href="#stack">Tech Stack</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -784,7 +787,6 @@
   const root = document.documentElement;
   let theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   root.setAttribute('data-theme', theme);
-
   function updateIcons() {
     const sunIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
     const moonIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
@@ -794,7 +796,6 @@
     });
   }
   updateIcons();
-
   toggles.forEach(t => t.addEventListener('click', () => {
     theme = theme === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', theme);
@@ -864,13 +865,15 @@
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 })();
 
-// Animated stat counters
+// Animated stat counters (respects prefers-reduced-motion)
 (function(){
   const counters = document.querySelectorAll('.stat-number[data-count]');
   if (!counters.length) return;
+  const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   function animateCounter(el) {
     const target = parseInt(el.dataset.count, 10);
     const suffix = el.dataset.suffix || '';
+    if (prefersReduced) { el.textContent = target + suffix; return; }
     const duration = 1400;
     const start = performance.now();
     const isYear = target > 999;
@@ -923,15 +926,36 @@
   });
 })();
 
-// Contact form
-document.getElementById('contactForm').addEventListener('submit', function(e) {
+// Contact form — Formspree AJAX submission
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const status = document.getElementById('formStatus');
-  status.style.display = 'block';
-  status.style.color = 'var(--color-primary)';
-  status.textContent = 'Thank you! We\'ll get back to you soon.';
-  this.reset();
-  setTimeout(() => { status.style.display = 'none'; }, 5000);
+  const btn = this.querySelector('button[type="submit"]');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  try {
+    const res = await fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      status.style.display = 'block';
+      status.style.color = 'var(--color-primary)';
+      status.textContent = '✓ Message sent! We\'ll get back to you soon.';
+      this.reset();
+    } else {
+      throw new Error('Server error');
+    }
+  } catch(err) {
+    status.style.display = 'block';
+    status.style.color = 'var(--color-error, #a12c7b)';
+    status.textContent = 'Something went wrong. Please email us directly at contact@litends.com';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Send Message';
+    setTimeout(() => { status.style.display = 'none'; }, 6000);
+  }
 });
 
 // Smooth scroll
@@ -946,7 +970,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// Book a Call modal
+// Book a Call modal — dynamic slots from today
 (function(){
   const modal = document.getElementById('bookModal');
   const openBtn = document.getElementById('bookCallBtn');
@@ -957,6 +981,44 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   const selectedSlotDisplay = document.getElementById('selectedSlotDisplay');
   const confirmBtn = document.getElementById('confirmCallBtn');
   let selectedSlot = null;
+
+  // Generate next 6 weekday slots from today
+  function generateSlots() {
+    const slots = [];
+    const times = ['09:00', '11:00', '14:00', '16:00'];
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    let d = new Date();
+    d.setDate(d.getDate() + 1);
+    while (slots.length < 6) {
+      const dow = d.getDay();
+      if (dow !== 0 && dow !== 6) {
+        const label = days[dow] + ' ' + months[d.getMonth()] + ' ' + d.getDate();
+        const time = times[slots.length % times.length];
+        const hour = parseInt(time);
+        const ampm = hour >= 12 ? 'PM' : 'AM';
+        const h12 = hour > 12 ? hour - 12 : hour;
+        slots.push({ label, time, display: h12 + ':00 ' + ampm });
+      }
+      d.setDate(d.getDate() + 1);
+    }
+    return slots;
+  }
+
+  generateSlots().forEach(slot => {
+    const btn = document.createElement('button');
+    btn.className = 'slot-btn';
+    btn.dataset.slot = slot.label + ' · ' + slot.time;
+    btn.innerHTML = slot.label + '<span>' + slot.display + '</span>';
+    btn.addEventListener('click', function() {
+      slotsGrid.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+      this.classList.add('selected');
+      selectedSlot = this.dataset.slot;
+      selectedSlotDisplay.textContent = 'Selected: ' + selectedSlot;
+      modalForm.hidden = false;
+    });
+    slotsGrid.appendChild(btn);
+  });
 
   function openModal() {
     modal.hidden = false;
@@ -979,16 +1041,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   closeBtn.addEventListener('click', closeModal);
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
-
-  slotsGrid.querySelectorAll('.slot-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      slotsGrid.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
-      this.classList.add('selected');
-      selectedSlot = this.dataset.slot;
-      selectedSlotDisplay.textContent = 'Selected: ' + selectedSlot;
-      modalForm.hidden = false;
-    });
-  });
 
   confirmBtn.addEventListener('click', function() {
     const name = document.getElementById('callName').value.trim();
