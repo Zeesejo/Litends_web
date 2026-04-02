@@ -62,6 +62,7 @@
       <li><a href="#stack">Stack</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#founder">Founder</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
       <li>
         <button class="theme-toggle theme-toggle-desktop" data-theme-toggle aria-label="Switch theme">
@@ -96,22 +97,22 @@
 <section class="stats-bar">
   <div class="stats-bar-inner">
     <div class="stat-item reveal">
-      <span class="stat-number">10+</span>
+      <span class="stat-number" data-count="10" data-suffix="+">10+</span>
       <span class="stat-label">AI Projects Delivered</span>
     </div>
     <div class="stat-divider" aria-hidden="true"></div>
     <div class="stat-item reveal">
-      <span class="stat-number">5</span>
+      <span class="stat-number" data-count="5" data-suffix="">5</span>
       <span class="stat-label">Countries Reached</span>
     </div>
     <div class="stat-divider" aria-hidden="true"></div>
     <div class="stat-item reveal">
-      <span class="stat-number">100%</span>
+      <span class="stat-number" data-count="100" data-suffix="%">100%</span>
       <span class="stat-label">Client Satisfaction</span>
     </div>
     <div class="stat-divider" aria-hidden="true"></div>
     <div class="stat-item reveal">
-      <span class="stat-number">2026</span>
+      <span class="stat-number" data-count="2026" data-suffix="">2026</span>
       <span class="stat-label">Founded in Bremen</span>
     </div>
   </div>
@@ -454,8 +455,83 @@
   </div>
 </section>
 
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section class="section section-alt" id="faq">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label">Common Questions</div>
+      <h2>FAQ</h2>
+      <p>Answers to the questions we hear most often before a project starts.</p>
+    </div>
+
+    <div class="faq-list reveal" style="max-width: var(--content-narrow); margin: 0 auto;">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>How much does a project typically cost?</span>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Every project is scoped individually because the cost depends heavily on complexity, timeline, and requirements. A simple landing page starts from a few hundred euros, while a custom AI integration can range from €1,500 to €8,000+. We always discuss budget openly before committing to anything.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>How long does it take to build a website or AI tool?</span>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>A standard website takes 1–3 weeks. A custom AI integration typically takes 2–6 weeks depending on the data sources and workflow complexity involved. We'll give you a realistic timeline estimate during the initial conversation — and we stick to it.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Do I need a technical background to work with you?</span>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Not at all. We translate complex technical decisions into plain language and guide you through the process. All you need to bring is a clear goal and an open mind. We handle the technical side entirely.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>What if AI isn't actually the right solution for my problem?</span>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>We'll tell you honestly. We don't chase AI for its own sake. If a simple automation script or a well-designed workflow solves your problem better and cheaper, that's what we'll recommend. Our goal is your outcome, not selling AI.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Do you offer support after the project is delivered?</span>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. We offer flexible ongoing maintenance and support arrangements. Whether you need occasional updates or regular check-ins, we can tailor a support plan that fits your budget and usage patterns.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Where are you based and do you work remotely?</span>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>We're based in Bremen, Germany, but work with clients remotely across Europe and beyond. All communication can happen over video call, email, or chat — whichever suits you best.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════ CTA BANNER ═══════════════ -->
-<section class="section section-alt">
+<section class="section">
   <div class="section-inner">
     <div class="cta-banner reveal">
       <h2>Ready to start a project?</h2>
@@ -466,7 +542,7 @@
 </section>
 
 <!-- ═══════════════ CONTACT ═══════════════ -->
-<section class="section" id="contact">
+<section class="section section-alt" id="contact">
   <div class="section-inner">
     <div class="contact-layout">
       <div class="contact-info reveal">
@@ -569,6 +645,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#founder">Founder</a></li>
           <li><a href="#process">How We Work</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -697,6 +774,77 @@
 
   window.addEventListener('scroll', onScroll, { passive: true });
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+})();
+
+// Animated stat counters — trigger once when stats bar enters viewport
+(function(){
+  const counters = document.querySelectorAll('.stat-number[data-count]');
+  if (!counters.length) return;
+
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1400;
+    const start = performance.now();
+    const isYear = target > 999;
+    const from = isYear ? target - 4 : 0;
+
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function step(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const value = Math.round(from + (target - from) * easeOut(progress));
+      el.textContent = value + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(c => observer.observe(c));
+})();
+
+// FAQ accordion
+(function(){
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const item = this.closest('.faq-item');
+      const answer = item.querySelector('.faq-answer');
+      const isOpen = this.getAttribute('aria-expanded') === 'true';
+
+      // Close all others
+      document.querySelectorAll('.faq-item').forEach(other => {
+        if (other !== item) {
+          other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          other.querySelector('.faq-answer').style.maxHeight = '0';
+          other.querySelector('.faq-answer').style.paddingBottom = '0';
+          other.classList.remove('open');
+        }
+      });
+
+      // Toggle this one
+      if (isOpen) {
+        this.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = '0';
+        answer.style.paddingBottom = '0';
+        item.classList.remove('open');
+      } else {
+        this.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        answer.style.paddingBottom = 'var(--space-5)';
+        item.classList.add('open');
+      }
+    });
+  });
 })();
 
 // Contact form handler (frontend only)
