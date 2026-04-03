@@ -756,11 +756,12 @@
 
 <!-- ═══════════════ SCRIPTS ═══════════════ -->
 <script>
-// Theme toggle
+// Theme toggle — persists choice in localStorage
 (function(){
   const toggles = document.querySelectorAll('[data-theme-toggle], [data-theme-toggle-mobile]');
   const root = document.documentElement;
-  let theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  const saved = localStorage.getItem('litends-theme');
+  let theme = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   root.setAttribute('data-theme', theme);
   function updateIcons() {
     const sunIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
@@ -774,15 +775,20 @@
   toggles.forEach(t => t.addEventListener('click', () => {
     theme = theme === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', theme);
+    localStorage.setItem('litends-theme', theme);
     updateIcons();
   }));
 })();
 
-// Mobile nav
+// Mobile nav — click + keyboard (Enter/Space)
 (function(){
   const btn = document.getElementById('navHamburger');
   const links = document.getElementById('navLinks');
-  btn.addEventListener('click', () => links.classList.toggle('open'));
+  function toggle() { links.classList.toggle('open'); }
+  btn.addEventListener('click', toggle);
+  btn.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+  });
   links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
 })();
 
@@ -917,7 +923,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     if (res.ok) {
       status.style.display = 'block';
       status.style.color = 'var(--color-primary)';
-      status.textContent = '✓ Message sent! We\'ll get back to you soon.';
+      status.textContent = '\u2713 Message sent! We\'ll get back to you soon.';
       this.reset();
     } else {
       throw new Error('Server error');
