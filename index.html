@@ -5,6 +5,7 @@
 <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
+<link rel="canonical" href="https://litends.com">
 <title>Litends — AI Solutions & Web Development</title>
 <meta name="description" content="Litends helps startups and businesses build AI-powered tools and modern websites. Based in Bremen, Germany. Founded by Zeeshan.">
 <meta name="keywords" content="AI consulting, web development, AI integration, Bremen, Germany, machine learning, startup">
@@ -18,28 +19,36 @@
 <meta name="twitter:description" content="AI-powered tools and modern websites for startups. Based in Bremen, Germany.">
 <meta name="twitter:image" content="https://litends.com/assets/og-image.png">
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://api.fontshare.com">
-<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+<!-- Fonts: trimmed to only used weights -->
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="./base.css">
 <link rel="stylesheet" href="./style.css">
 
-<!-- JSON-LD -->
+<!-- JSON-LD: Organization + WebSite -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Litends",
-  "url": "https://litends.com",
-  "description": "AI solutions and web development for startups and businesses.",
-  "founder": {
-    "@type": "Person",
-    "name": "Zeeshan Modi",
-    "jobTitle": "CEO & Founder",
-    "sameAs": "https://www.linkedin.com/in/zeesejo/"
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Litends",
+    "url": "https://litends.com",
+    "description": "AI solutions and web development for startups and businesses.",
+    "founder": {
+      "@type": "Person",
+      "name": "Zeeshan Modi",
+      "jobTitle": "CEO & Founder",
+      "sameAs": "https://www.linkedin.com/in/zeesejo/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Litends",
+    "url": "https://litends.com"
   }
-}
+]
 </script>
 </head>
 <body>
@@ -67,11 +76,9 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#home" class="active">Home</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#stack">Stack</a></li>
       <li><a href="#portfolio">Work</a></li>
       <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#founder">Founder</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
       <li>
@@ -97,9 +104,8 @@
       Litends is a Bremen-based startup helping businesses integrate AI tools and build modern, high-performance websites. We focus on practical solutions that deliver real results.
     </p>
     <div class="hero-cta-group">
-      <a href="#services" class="btn btn-primary">Our Services</a>
-      <a href="mailto:contact@litends.com?subject=Free%20Call%20Request%20%E2%80%94%20Litends&body=Hi%20Zeeshan%2C%0A%0AI'd%20love%20to%20book%20a%20free%2030-min%20call%20to%20discuss%20my%20project.%0A%0AName%3A%20%0ABest%20time%20to%20reach%20me%3A%20%0AWhat%20I%20need%20help%20with%3A%20" class="btn btn-accent">Book a Free Call</a>
-      <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      <a href="#contact" class="btn btn-primary">Start a Project</a>
+      <a href="#services" class="btn btn-secondary">See Our Services</a>
     </div>
   </div>
 </section>
@@ -660,7 +666,7 @@
 
       </div>
 
-      <!-- Formspree-powered contact form — replace YOUR_FORM_ID with your Formspree form ID -->
+      <!-- Replace YOUR_FORM_ID with your Formspree form ID -->
       <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <input type="hidden" name="_subject" value="New message from Litends.com">
         <div class="form-group">
@@ -756,12 +762,11 @@
 
 <!-- ═══════════════ SCRIPTS ═══════════════ -->
 <script>
-// Theme toggle — persists choice in localStorage
+// Theme toggle — in-memory only (no localStorage, safe for all environments)
 (function(){
   const toggles = document.querySelectorAll('[data-theme-toggle], [data-theme-toggle-mobile]');
   const root = document.documentElement;
-  const saved = localStorage.getItem('litends-theme');
-  let theme = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  let theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   root.setAttribute('data-theme', theme);
   function updateIcons() {
     const sunIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
@@ -775,12 +780,11 @@
   toggles.forEach(t => t.addEventListener('click', () => {
     theme = theme === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', theme);
-    localStorage.setItem('litends-theme', theme);
     updateIcons();
   }));
 })();
 
-// Mobile nav — click + keyboard (Enter/Space)
+// Mobile nav
 (function(){
   const btn = document.getElementById('navHamburger');
   const links = document.getElementById('navLinks');
@@ -846,7 +850,7 @@
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 })();
 
-// Animated stat counters (respects prefers-reduced-motion)
+// Animated stat counters
 (function(){
   const counters = document.querySelectorAll('.stat-number[data-count]');
   if (!counters.length) return;
@@ -907,7 +911,7 @@
   });
 })();
 
-// Contact form — Formspree AJAX submission
+// Contact form — Formspree AJAX
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const status = document.getElementById('formStatus');
